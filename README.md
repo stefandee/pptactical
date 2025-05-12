@@ -96,12 +96,13 @@ Additional coding by: Florin, Traian "symbol shift" Pop, Adrian "Kafka" Pop, Ste
 Assets come from the original Pure Power project and were created by Bogdan "Dahn" Hodorog, Stefan "Karg" Dicu, Stelian Serban and Stefan "Max" Giurgiu.
 
 ## Media
-| ![PPTactical Screenshot 001](web/0.9.6/ss/0.9.6/easyrecon_dustoff_m.jpg "PPTactical Screenshot 001") | ![PPTactical Screenshot 002](web/0.9.6/ss/0.9.6/easyrecon_respiro_m.jpg "PPTactical Screenshot 002") |
-| ![PPTactical Screenshot 003](web/0.9.6/ss/0.9.5rc1/ppt_layered_building_and_aircraftsm.jpg "PPTactical Screenshot 003") | ![PPTactical Screenshot 004](web/0.9.6/ss/0.9.0rc1/ppt004m.jpg "PPTactical Screenshot 004") |
-| ![PPTactical Screenshot 005](web/0.9.6/ss/0.8.5/e005m.jpg "PPTactical Screenshot 005") | ![PPTactical Screenshot 006](web/0.9.6/ss/0.7.0/e001m.JPG "PPTactical Screenshot 006") |
-| ![PPTactical Screenshot 007](web/0.9.6/ss/0.7.0/e002m.JPG "PPTactical Screenshot 007") | ![PPTactical Screenshot 008](web/0.9.6/ss/0.7.0/e003m.JPG "PPTactical Screenshot 008") |
-| ![PPTactical Screenshot 009](web/0.9.6/ss/0.4.0/e001m.jpg "PPTactical Screenshot 009") | ![PPTactical Screenshot 010](web/0.9.6/ss/0.4.0/e002m.jpg "PPTactical Screenshot 010") |
-| ![PPTactical Screenshot 011](web/0.9.6/ss/0.4.0/e003m.jpg "PPTactical Screenshot 011") | |
+
+| ![PPTactical Screenshot 001](web/0.9.6/ss/0.9.6/easyrecon_dustoff_m.jpg) | ![PPTactical Screenshot 002](web/0.9.6/ss/0.9.6/easyrecon_respiro_m.jpg) |
+| ![PPTactical Screenshot 003](web/0.9.6/ss/0.9.5rc1/ppt_layered_building_and_aircraftsm.jpg) | ![PPTactical Screenshot 004](web/0.9.6/ss/0.9.0rc1/ppt004m.jpg) |
+| ![PPTactical Screenshot 005](web/0.9.6/ss/0.8.5/e005m.jpg) | ![PPTactical Screenshot 006](web/0.9.6/ss/0.7.0/e001m.JPG) |
+| ![PPTactical Screenshot 007](web/0.9.6/ss/0.7.0/e002m.JPG) | ![PPTactical Screenshot 008](web/0.9.6/ss/0.7.0/e003m.JPG) |
+| ![PPTactical Screenshot 009](web/0.9.6/ss/0.4.0/e001m.jpg) | ![PPTactical Screenshot 010](web/0.9.6/ss/0.4.0/e002m.jpg) |
+| ![PPTactical Screenshot 011](web/0.9.6/ss/0.4.0/e003m.jpg) | |
 
 ## License
 
