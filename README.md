@@ -104,9 +104,9 @@ Assets come from the original Pure Power project and were created by Bogdan "Dah
 ![PPTactical Screenshot 006](web/0.9.6/ss/0.7.0/e001m.JPG "PPTactical Screenshot 006")
 ![PPTactical Screenshot 007](web/0.9.6/ss/0.7.0/e002m.JPG "PPTactical Screenshot 007")
 ![PPTactical Screenshot 008](web/0.9.6/ss/0.7.0/e003m.JPG "PPTactical Screenshot 008")
-![PPTactical Screenshot 009](web/0.9.6/ss/0.4.0/e001m.JPG "PPTactical Screenshot 009")
-![PPTactical Screenshot 010](web/0.9.6/ss/0.4.0/e002m.JPG "PPTactical Screenshot 010")
-![PPTactical Screenshot 011](web/0.9.6/ss/0.4.0/e003m.JPG "PPTactical Screenshot 011")
+![PPTactical Screenshot 009](web/0.9.6/ss/0.4.0/e001m.jpg "PPTactical Screenshot 009")
+![PPTactical Screenshot 010](web/0.9.6/ss/0.4.0/e002m.jpg "PPTactical Screenshot 010")
+![PPTactical Screenshot 011](web/0.9.6/ss/0.4.0/e003m.jpg "PPTactical Screenshot 011")
 
 ## License
 
