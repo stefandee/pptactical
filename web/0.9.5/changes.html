@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>PPTactical Engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="160"><a href="index.html"><img src="img/logo.jpg" width="160" height="120" border="0"></a></td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160"><img src="img/quote.jpg" width="149" height="21"></td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td bgcolor="DDAA1F">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160">&nbsp;</td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td align="left" valign="top" bgcolor="DDAA1F"> <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <b>Engine+Architecture features</b></font> 
+      <ul>
+        <li> <font size="2" face="Arial, Helvetica, sans-serif">Support for jpg 
+          files (using jpeglib v6b)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Support for png 
+          files &#8211; code by tamlin (using pnglib and pngdib lib made by Jason 
+          Summers); this is not portable to *nix since pngdib contains Win specific 
+          code</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif">Restructured the 
+          System; that is, all code that contains code for graphics, sound, input, 
+          timer, exit, fonts, surfaces and so on are grouped in a folder in Common/System; 
+          these &#8220;systems&#8221; are unrelated, although they duplicate code.</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif">Removed Archive 
+          concept and introduced Stream concept; there is an Ansi Stream class, 
+          which handles file I/O using standard f-calls (fopen, fread/fwrite and 
+          so on)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Prims16 file now 
+          contains code to clip line segments (don&#8217;t quite remember where 
+          I snatched the code from :])</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Input system was 
+          remade (PPK concept was introduced &#8211; Pure Power Key &#8211; that 
+          is, a key that is used by the engine; the graphic interface now asks 
+          for these kind of keys instead of querying specific DirectX or SDL codes 
+          from input system). The input system now transforms the PPK_ codes to 
+          specific input system key codes</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Removed InfantryBay 
+          and added a generic Bay manager class</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added Aircraft 
+          class</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added Fighter 
+          class, based on Aircraft; added fighter weapons and propulsion subsys</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added Chopper 
+          class, based on Aircraft; added chopper weapons and propulsion subsys</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Derived Dropship 
+          class from Chopper (previously from Static)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Layered buildings 
+          (see Rion Headquarters static &#8211; it looks quite cool although it 
+          is useless as a feature)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Support for TTF 
+          fonts in SDL using SDL_font lib</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Audio system for 
+          SDL is based on SDL_mixer lib</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Volume is now 
+          expressed inside engine as percents (0..100% - 0 is silence, 100% - 
+          full volume); this ease the porting between SDL and DirectX</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Pan is now expressed 
+          as percents (-100%..100% - -100% is full left, silence right and so 
+          on)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added a WeaponLib, 
+          which you may query if a unit can fire another unit using a certain 
+          weapon</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Quick load and 
+          save in engine (CSL classes still won&#8217;t serialize/deserialize 
+          &#8211; too lazy)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Projectiles and 
+          Aircrafts now have a Z axis</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added &#8220;time-to-live&#8221; 
+          for projectiles</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added code to 
+          detect platform (operating system and compiler)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Cons (http://www.dsmit.com/cons) 
+          script to build on *nix (still to improve, for selection of system &#8211; 
+          SDL or other, certain help for usage)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> A particle system 
+          (codenamed Mot); it has powerful features but, unfortunately it&#8217;s 
+          not 100% operational and is not integrated into engine nor it has an 
+          editor</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Terrain generators 
+          (will be integrated into 0.9.8 for the automatic map generation feature)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Scripting interface 
+          for Aircrafts</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Scripting interface 
+          for Statics</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Aircraft and Dropship 
+          Info controls</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added Boids class 
+          (not integrated/editable in the engine)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added Oscilator 
+          subsys</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Reading and writing 
+          structures (statics, infantry, vehicles) is performed through serialization/deserialization 
+          interface (and is no longer dependent on enum size or data alignment, 
+          allowing flexibility)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Alpha blending; 
+          PaintSpriteToSurface and PaintSurfaceToSurface now take a new parameter 
+          (initialized) - an alpha value; it was tested on SDL and it works; it 
+          was also tested on DirectX, but it seems that it won&#8217;t work (either 
+          with the code or with my hardware)</font></li>
+      </ul>
+      <p><font size="2" face="Arial, Helvetica, sans-serif"><br>
+        <b>Tools features</b></font></p>
+      <ul>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Statics editor 
+          is able to edit layered buildings (one layer may contain a sprite, which 
+          may be animated or not)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> UnitsEd contains 
+          another tab (Visual); for now it contains editable properties when a 
+          unit dies</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Restructured the 
+          custom C++Builder components projects (it seems that in this 6th version, 
+          Borland made a lot of changes, separating design time and runtime code 
+          for components)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added another 
+          C++Builder component &#8211; a HTTP label that I wanted for some time 
+          to add inside &#8220;About&#8221; boxes(clicks and open a link in the 
+          current browser); it does not perform URL checking at design time, but 
+          it is usable</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added code to 
+          handle aircrafts in the object tree (Map Editor)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added code to 
+          handle aircrafts and statics parameters in the Object properties (Map 
+          Editor)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif"> Added code to 
+          handle bay for units that may transport other units (a separate window 
+          appears where you may be able to add an existing unit or clone a unit 
+          from the data files)</font></li>
+        <li><font size="2" face="Arial, Helvetica, sans-serif">&#8220;Open Recent&#8221; 
+          item in File menu &#8211; a file history (Map Editor)</font></li>
+      </ul></td>
+  </tr>
+  <tr>
+    <td bgcolor="FEEFC3" width="160" height="23">&nbsp;</td>
+    <td bgcolor="FEEFC3" width="10%">&nbsp;</td>
+    <td bgcolor="FEEFC3"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="67" align="left"><a href="changes.html"><img src="img/btn_changes.jpg" width="85" height="23" border="0"></a></td>
+          <td width="46" align="left"><a href="bugs.html"><img src="img/btn_bugs.jpg" width="85" height="23" border="0"></a></td>
+          <td width="42" align="left"><a href="ahead.html"><img src="img/btn_road.jpg" width="85" height="23" border="0"></a></td>
+          <td width="42" align="left"><a href="people.html"><img src="img/btn_people.jpg" width="85" height="23" border="0"></a></td>
+          <td width="53" align="left"><a href="visual.html"><img src="img/btn_visual.jpg" width="85" height="23" border="0"></a></td>
+          <td width="85" align="left"><a href="dl.html"><img src="img/btn_dl.jpg" width="85" height="23" border="0"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="160">&nbsp;</td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=36165&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo"/></a>
+<a href="http://www.thefreecountry.com/"> <img src="http://www.thefreecountry.com/images/tfc88x31.gif" border="0" width="88" height="31" alt="thefreecountry.com: Free Programmers' Resources, Free Webmasters' Resources, Free Security Resources, Free Software"/></a>
+</body>
+</html>

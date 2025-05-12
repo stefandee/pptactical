@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>PPTactical Engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="160"><a href="index.html"><img src="img/logo.jpg" width="160" height="120" border="0"></a></td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160"><img src="img/quote.jpg" width="149" height="21"></td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td bgcolor="DDAA1F">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160">&nbsp;</td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td align="left" valign="top" bgcolor="DDAA1F"> 
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><b>Fixed 
+        Bugs</b></font></p>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Engine: firing 
+          all weapons won&#8217;t give any visual result; this was due to the 
+          CanBePlaced method which returned false for CIGDamage and CIGEffect 
+          objects :)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Corrected crashing 
+          bug in CIGBulletObject::Explode() if the effect sprite was null (in 
+          units editor editor there was a blank filename) &#8211; no filename, 
+          no sprite that is</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Corrected a bug 
+          in Map Editor: at exit there was an exception; this was due to the fact 
+          that a global variable value (gPath, a string) was deallocated while 
+          the logfile calls still need the value</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Saving a map in 
+          map editor may result in an exception: this was due to a wrong parameter 
+          passed to FMain::SaveMap</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Taking screenshots 
+          resulted in corrupted bitmaps (Tamlin)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Hiding command 
+          panel (pressing space) had a small bug (Tamlin)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Right clicking 
+          in mini-map now sets the center of the view for the map (Tamlin)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Making teams did 
+          not worked (this was due the fact that at deserialization objects were</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">not added to OWNEDUNITS 
+          list)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Fixed a bug in 
+          FireAt script function which rendered the function useless</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Fixed bugs when 
+          projectiles (rockets/bullets) exploding crashed</font></li>
+      </ul>
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><b><br>
+        Known bugs</b></font></p>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2"> Objects may visualy 
+          dissapear ocassionaly from the map while moving</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Moving the cursor 
+          over a unit while a group is selected makes a rectangle get cleared 
+          in the unit info area (it&#8217;s probably a forgotten control which 
+          is related to the mouse over action)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Unit info areas 
+          are in disorder (misaligned labels and such); that&#8217;s no problem, 
+          it is supposed to be this way</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Units larger than 
+          1x1 tiles behave at pathfinding like those of 1x1 size; this causes 
+          overlapping units. Will be fixed in future releases</font></li>
+      </ul>
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <b> Issues</b></font></p>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2"> take care that 
+          modifying the counters means that you have to (re)compile both the engine 
+          and the map editor and that old maps (that have different values for 
+          the counters) need to be re-saved in the map editor. Otherwise, at deserialization, 
+          the counters will receive their older values</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">the bots implemented 
+          in scripts are not very intelligent; but since none of us is an AI expert, 
+          we have to read and learn things about this on the move<br>
+          <br>
+          </font></li>
+      </ul></td>
+  </tr>
+  <tr>
+    <td bgcolor="FEEFC3" width="160" height="23">&nbsp;</td>
+    <td bgcolor="FEEFC3" width="10%">&nbsp;</td>
+    <td bgcolor="FEEFC3"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="67" align="right"><a href="changes.html"><img src="img/btn_changes.jpg" width="62" height="23" border="0"></a></td>
+          <td width="46" align="right"><a href="bugs.html"><img src="img/btn_bugs.jpg" width="41" height="23" border="0"></a></td>
+          <td width="84" align="right"><a href="ahead.html"><img src="img/btn_road.jpg" width="79" height="23" border="0"></a></td>
+          <td width="53" align="right"><a href="visual.html"><img src="img/btn_visual.jpg" width="48" height="23" border="0"></a></td>
+          <td width="85" align="right"><a href="dl.html"><img src="img/btn_dl.jpg" width="80" height="23" border="0"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="160">&nbsp;</td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

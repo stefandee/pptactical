@@ -24,9 +24,56 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+# C++ Builder
+*.~*
+*.tds
+*.ild
+*.ilk
+*.ilc
+*.ilf 
+*.ils
+*.map
+*.stat
+*.cbproj.local
+*.groupproj.local
+*.ddp
+*.dsk
+__recovery/
+__history/
+__astcache/
+tmp/
+bin/
+
+# MSVC temporary files
+*.pdb
+
+# MSVC Intellisense Data
+*.ncb
+
+# Code::Blocks
+*.depend
+*.layout
+
+# Releases
+.releases/
+
+# Project Internals
+doc/internal/
+assets/Fonts/
+bin/Data/Sound/Music
+
+# Temporary/generated folders and files
+tmp/
+
+# 3rd party
+lib/**/
+
+# User Data
+bin/*.txt
+bin/out/**/

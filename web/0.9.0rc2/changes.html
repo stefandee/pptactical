@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>PPTactical Engine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="160"><a href="index.html"><img src="img/logo.jpg" width="160" height="120" border="0"></a></td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160"><img src="img/quote.jpg" width="149" height="21"></td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td bgcolor="DDAA1F">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="DDAA1F" width="160">&nbsp;</td>
+    <td bgcolor="DDAA1F" width="10%">&nbsp;</td>
+    <td align="left" valign="top" bgcolor="DDAA1F"> 
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <b>Engine features</b></font>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Tanks (may fire 
+          while moving)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Artillery units 
+          (may only fire if standing)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Recons (tanks with 
+          high moving speed)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Transport (may 
+          only carry infantry units, may fire while moving)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Load action for 
+          Infantry units</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Unload and Unload 
+          all actions for transports (unload is only available from transport 
+          info area)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Weapons explosions 
+          and projectiles for Spee and Lynx rendered</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Ballistic projectile</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Muzzle points</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Path finding considers 
+          terrain type, propulsion type (hovers may pass over water) and altitude 
+          difference (slope for descending/ascending)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Units view now 
+          considers altitude (some sort of raycast)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Projectile trajectory 
+          takes into account altitudes</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Unit info areas 
+          (brief info about units, group selections)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Smart screenshots</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Mission scripting 
+          (see the PPT Script Language Reference.doc)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added UnitType 
+          function for infantry scripting</font></li>
+      </ul>
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <b>Tools features</b></font></p>
+      <ul>
+        <li> <font face="Arial, Helvetica, sans-serif" size="2">Added vehicle 
+          editing to UnitsEd (the gui was designed, but no editing was possible)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Corrected several 
+          issues in UnitsEd (MaskEdits increased capacity, added an edit box for 
+          infantry fire resistance)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added turret turn 
+          rate parameter for vehicles (UnitsEd)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added portrait 
+          for infantry and vehicles (UnitsEd)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added turret turn 
+          rate, minimum range for vehicles weapons, projectiles/shot (P/shot), 
+          track persist time and after effect sprite for weapons (both infantry 
+          and vehicles), max slope for ascending and descending (both infantry 
+          and vehicles) and bay capacity for vehicles (UnitsEd)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Exit point for 
+          vehicles weapons in skeleton screen (UnitsEd)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added option for 
+          importing a large sprite for tile; the sprite will be automatically 
+          be splitted into 96x96 cells - the corresponding bitmaps and .dats will 
+          be generated (MapChunkEd)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Re-added the altitude 
+          editor (MapEditor)</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Added vehicle editing 
+          in unit tree (MapEditor)</font></li>
+      </ul>
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <b>Architecture</b></font></p>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2"> Too many changes 
+          to be listed</font></li>
+      </ul>
+      <p><font face="Arial, Helvetica, sans-serif" size="2"><br>
+        <strong>Scripts</strong></font></p>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Infantry bots: 
+          camper, assault</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Vehicles bots: 
+          artillery, melee tank, dug-in tank</font></li>
+        <li><font face="Arial, Helvetica, sans-serif" size="2">Missions scripts: 
+          BattleZone</font></li>
+      </ul></td>
+  </tr>
+  <tr>
+    <td bgcolor="FEEFC3" width="160" height="23">&nbsp;</td>
+    <td bgcolor="FEEFC3" width="10%">&nbsp;</td>
+    <td bgcolor="FEEFC3"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="67" align="right"><a href="changes.html"><img src="img/btn_changes.jpg" width="62" height="23" border="0"></a></td>
+          <td width="46" align="right"><a href="bugs.html"><img src="img/btn_bugs.jpg" width="41" height="23" border="0"></a></td>
+          <td width="84" align="right"><a href="ahead.html"><img src="img/btn_road.jpg" width="79" height="23" border="0"></a></td>
+          <td width="53" align="right"><a href="visual.html"><img src="img/btn_visual.jpg" width="48" height="23" border="0"></a></td>
+          <td width="85" align="right"><a href="dl.html"><img src="img/btn_dl.jpg" width="80" height="23" border="0"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="160">&nbsp;</td>
+    <td width="10%">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
