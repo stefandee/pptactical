@@ -98,6 +98,7 @@ Assets come from the original Pure Power project and were created by Bogdan "Dah
 ## Media
 
 | ![PPTactical Screenshot 001](web/0.9.6/ss/0.9.6/easyrecon_dustoff_m.jpg) | ![PPTactical Screenshot 002](web/0.9.6/ss/0.9.6/easyrecon_respiro_m.jpg) |
+|:--:|:--:|
 | ![PPTactical Screenshot 003](web/0.9.6/ss/0.9.5rc1/ppt_layered_building_and_aircraftsm.jpg) | ![PPTactical Screenshot 004](web/0.9.6/ss/0.9.0rc1/ppt004m.jpg) |
 | ![PPTactical Screenshot 005](web/0.9.6/ss/0.8.5/e005m.jpg) | ![PPTactical Screenshot 006](web/0.9.6/ss/0.7.0/e001m.JPG) |
 | ![PPTactical Screenshot 007](web/0.9.6/ss/0.7.0/e002m.JPG) | ![PPTactical Screenshot 008](web/0.9.6/ss/0.7.0/e003m.JPG) |
