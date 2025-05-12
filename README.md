@@ -96,7 +96,6 @@ Additional coding by: Florin, Traian "symbol shift" Pop, Adrian "Kafka" Pop, Ste
 Assets come from the original Pure Power project and were created by Bogdan "Dahn" Hodorog, Stefan "Karg" Dicu, Stelian Serban and Stefan "Max" Giurgiu.
 
 ## Media
-| :---: | :---: |
 | ![PPTactical Screenshot 001](web/0.9.6/ss/0.9.6/easyrecon_dustoff_m.jpg "PPTactical Screenshot 001") | ![PPTactical Screenshot 002](web/0.9.6/ss/0.9.6/easyrecon_respiro_m.jpg "PPTactical Screenshot 002") |
 | ![PPTactical Screenshot 003](web/0.9.6/ss/0.9.5rc1/ppt_layered_building_and_aircraftsm.jpg "PPTactical Screenshot 003") | ![PPTactical Screenshot 004](web/0.9.6/ss/0.9.0rc1/ppt004m.jpg "PPTactical Screenshot 004") |
 | ![PPTactical Screenshot 005](web/0.9.6/ss/0.8.5/e005m.jpg "PPTactical Screenshot 005") | ![PPTactical Screenshot 006](web/0.9.6/ss/0.7.0/e001m.JPG "PPTactical Screenshot 006") |
