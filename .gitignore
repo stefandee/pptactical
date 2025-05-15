@@ -74,4 +74,6 @@ lib/**/
 
 # User Data
 bin/*.txt
+bin/*.pCfg
+bin/*.cfg
 bin/out/**
