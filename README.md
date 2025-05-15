@@ -2,13 +2,15 @@
 
 Pure Power Tactical Engine (in short PPTactical) is a cross-platform 2D engine for real time strategy and real time tactics games.
 
-The engine is currently frozen for major features and development, however, it's still maintained to fix minor issues and keep it up to date with compilation.
+The engine is currently frozen for major features. However, it's still maintained for minor bug fixes and keeping it up to date with compiler and libraries changes.
 
 ## History
 
 The project began as the closed source engine of the first game developed by Piron Games, called [Pure Power](https://www.pirongames.com/games/ppower/ppower.htm) (1998-2001)
 
-The engine was released as open-source and has been under steady development until its latest stable release, version 0.9.6 (2001-2006)
+The engine was open-sourced and has been under steady development until its latest stable release, version 0.9.6 (2001-2006)
+
+Refactoring, bug fixes, library and compiler/IDE upgrades were done in 2017 and 2025.
 
 Previous releases of the engine may be found at https://sourceforge.net/projects/pptactical/
 
@@ -30,21 +32,27 @@ Alternatively, pass --recurse-submodules to git clone (or tick the box in your c
 
 ### Building The Engine
 
-A C++ compiler:
-* the engine has been tested using [mingw64](https://www.mingw-w64.org/) and x86_64-w64 architecture
+Get a C++ compiler:
+* compiler standard is ISO C++11
+* the engine has been tested using [mingw64](https://www.mingw-w64.org/) and x86_64-w64 architecture;
+* any architecture should be supported though.
 
-SDL 2:
+Get SDL 2:
+* the following libraries are required: [SDL 2](https://github.com/libsdl-org/SDL/releases), [SDL2 Image](https://github.com/libsdl-org/SDL_image/releases), [SDL2 gfx](https://sourceforge.net/projects/sdl2gfx/), [SDL2 mixer](https://github.com/libsdl-org/SDL_mixer/releases), [SDL2 ttf](https://github.com/libsdl-org/SDL_ttf/releases)
 * make sure you use the libraries compatible with the compiler;
-* tested with [SDL2-2.30.11 x64](https://github.com/libsdl-org/SDL/releases/tag/release-2.30.11);
-* unpack into [lib](lib/) folder or, if you have it installed, adjust the paths to your installation.
+* if using mingw, unpack into [lib/SDL2_mingw](lib/SDL2_mingw/) folder or, if you already have them installed, adjust the paths (include/linker) to your installation.
 
-Code::Blocks (optional):
+Get Code::Blocks (optional):
 * a project is available in [dev/codeblocks/engine_sdl](dev/codeblocks/engine_sdl/)
+* if you've installed SDL 2 libraries in another path than [lib/SDL2_mingw](lib/SDL2_mingw/), please adjust the include and library paths;
 * go to Settings -> Compiler -> Global Compiler Settings -> Toolchain executables and set the path to the C++ compiler you're planning to use.
 
-The engine should build and run on all major platforms where SDL is supported (Windows, Linux, Unix, etc).
+The engine should build with Microsoft C++ toolchain (Visual Studio, Code, etc), but no projects are supplied at this time.
 
-IMPORTANT NOTE: in order to overcome the endianess problem, the Stream_ANSI_C class has been added endian manipulation; since the data files are in little endian format, on big endian platforms conversion on reading basic data types must be performed. To enable this conversion for this reads (readBool, readInt, readFloat, readDouble methods of Stream classes) please open Platform.h and uncomment the "#define PPT_BIGENDIAN_IO 1" line.
+The engine should build and run on all platforms where SDL is supported (Windows, Linux, Unix, etc). 
+
+> [!IMPORTANT]
+> In order to overcome the endianess problem, the Stream_ANSI_C class has been added endian manipulation; since the data files are in little endian format, on big endian platforms conversion on reading basic data types must be performed. To enable endianess conversion, you must set the PPT_BIGENDIAN_IO define.
 
 ### Building The Tools
 
@@ -55,7 +63,7 @@ The tools are using custom VCL components, which must be installed first by open
 ### Running The Engine And Tools
 
 > [!IMPORTANT]
-> In order to run, please make sure that these DLLs are present in [bin](bin/) folder or in your path.
+> In order to run, please make sure that these DLLs are present in [bin](bin/) folder or in your path. Please make sure the DLLs are for the correct architecture you're building for (e.g. 64 bit)
 
 ```shell
 cd bin
@@ -65,19 +73,9 @@ SDL2.dll
 SDL2_image.dll
 SDL2_mixer.dll
 SDL2_ttf.dll
-libFLAC-8.dll
-libfreetype-6.dll
-libjpeg-9.dll
-libmodplug-1.dll
-libogg-0.dll
-libpng16-16.dll
-libtiff-5.dll
-libvorbis-0.dll
-libvorbisfile-3.dll
-libwebp-4.dll
-smpeg2.dll
-zlib1.dll
 ```
+
+## Heads-Up
 
 ## Documentation
 
