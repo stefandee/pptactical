@@ -1,0 +1,14 @@
+var YFromX(const x)
+{
+  var fl = floor(x);
+
+  if (x > fl + 0.5)
+  {
+    return x - fl;
+  }
+  else
+  {
+    return -x + fl + 1;
+  }
+}
+

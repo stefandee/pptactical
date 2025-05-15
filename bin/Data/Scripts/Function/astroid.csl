@@ -1,0 +1,13 @@
+var XParam(const u)
+{
+  var sinu = sin(u); 
+
+  return GetParam("A") * sinu * sinu * sinu;
+}
+
+var YParam(const u)
+{
+  var cosu = cos(u); 
+
+  return GetParam("B") * cosu * cosu * cosu;
+}

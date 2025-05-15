@@ -1,0 +1,114 @@
+// BattleZone Mission Script
+// Author: Karg
+// Date  : 05.02.2003
+// Info  : just a mission script
+
+// mission states
+const S_INIT = 0;
+const S_CINEMATIC = 1;
+const S_ENFORCESIDES = 2;
+const S_ENFORCESIDES_WAIT = 4;
+const S_END = 3;
+
+// batlegroup constants
+const BG_LANDSCAPE  = 1;
+const BG_PLAYER     = 2;
+const BG_RION       = 22;
+const BG_BARBARIANS = 11;
+
+// misc
+const ENFORCE_WAIT = 10;
+
+// vars
+var state = S_INIT, cinematic_delay = 0, enforce_wait = 0;
+
+// functions
+ShowMap(var xs, var ys, var xe, var ye, var value)
+{
+  var i, j;
+
+  for(i = xs; i < xe; i++)
+  {
+    for(j = ys; j < ye; j++)
+    {
+      NotifyVisibilityMap(i, j, BG_PLAYER, value);
+    }
+  }
+}
+
+Init()
+{
+  // show the map to the player so that he may enjoy the battle
+  ShowMap(0, 0, 50, 50, 2);
+
+  // post some messages
+  PostMessage("Battle zone");
+  PostMessage("-------------------");
+  PostMessage("v1.00");
+
+  // change states
+  state = S_CINEMATIC;
+}
+
+Cinematic()
+{
+    if (cinematic_delay == 0)
+    {
+    MoveCamera(40, 10);
+
+    PostMessage("Rion forces launch an assault against the");
+    PostMessage("barbarian defences...");
+    }
+
+    if (cinematic_delay > 15)
+    {
+    MoveCamera(15, 40);
+
+    PostMessage("...but the barbarians seem well dug-in.");
+    PostMessage("There're going to be some nice fireworks around.");
+
+    state = S_ENFORCESIDES;
+    }
+
+  cinematic_delay++;
+}
+
+EnforceSides()
+{
+  // one for the Rion
+  InsertInfantryAtPoint(42 + random(8), 1 + random(8), BG_RION, 5, "i-assault.csl");
+
+  // one for the Barbarians
+  InsertInfantryAtPoint(1 + random(8), 42 + random(8), BG_BARBARIANS, 3, "i-zonedefender.csl");
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_CINEMATIC)
+  {
+    Cinematic();
+  }
+
+  if (state == S_ENFORCESIDES)
+  {
+    EnforceSides();
+
+    state = S_ENFORCESIDES_WAIT;
+    enforce_wait = 0;
+  }
+
+  if (state == S_ENFORCESIDES_WAIT)
+  {
+    enforce_wait++;
+
+    if (enforce_wait > ENFORCE_WAIT)
+    {
+      state = S_ENFORCESIDES;
+    }
+  }
+}

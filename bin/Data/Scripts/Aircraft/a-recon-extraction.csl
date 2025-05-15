@@ -1,0 +1,47 @@
+// Extraction Aircraft for Easy Recon mission
+// Info:   Moves to the designated point and wait there :) 
+//         Landing point should be personalized depending on the
+//         necessities
+// Author: Karg
+
+// consts
+const gLandingPoint[2] = { 37, 18 };
+
+// unit states
+const S_INIT  = 0;
+const S_MOVE  = 1;
+const S_END   = 2;
+
+var state = S_INIT;
+
+Init()
+{
+  state = S_MOVE;
+
+  Move(gLandingPoint[0] + random(5) - 3, gLandingPoint[1] + random(5) - 3);
+
+  PostMessage("Pilot: Heading for LZ.");
+}
+
+MoveOut()
+{
+  // have we reached destination?
+  if (!Moving())
+  {
+    state = S_END;
+  }
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_MOVE)
+  {
+    MoveOut();
+  }
+}
+

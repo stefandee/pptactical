@@ -1,0 +1,188 @@
+// Assault Infantry Bot
+// Author: Karg
+// Date  : 28.01.2003
+// Info  : Brave bot :) March to an area, attacks every enemy in his path
+//         will enter the assault zone and will randomly moves inside it
+//         scanning for enemy units
+
+// STATES
+const S_OUTINIT = 0;
+const S_OUTMOVE = 1;
+const S_OUTFIRE = 2;
+const S_INFIRE = 3;
+const S_INMOVE = 4;
+
+// AREA DEFINITON
+const areaXLeft = 10, areaXRight = 15, areaYTop = 37, areaYBottom = 42;
+
+// GLOBALS
+var state = S_OUTINIT, targetX, targetY, enemyId = -1;
+
+InArea()
+{
+  var myx = MyX();
+  var myy = MyY();
+
+  if (areaXLeft <  myx && myx < areaXRight &&
+      areaYTop < myy && myy < areaYBottom)
+  {
+    return 1;
+  }
+
+  return 0;
+}
+
+OutInit()
+{
+  targetX = areaXLeft + random(areaXRight - areaXLeft + 1);
+  targetY = areaYTop + random(areaYBottom - areaYTop + 1);
+
+  Move(targetX, targetY);
+
+  state = S_OUTMOVE;
+}
+
+ScanEnemy(var newState)
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan(0);
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(0, i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(0, enemyId);
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1; 
+      state = newState;
+      return;
+    }
+  }
+}
+
+OutCheckFire()
+{
+  var unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if ((unitStatus == "0") || (unitStatus == "1"))
+  {
+    enemyId = -1;
+    state = S_OUTMOVE;
+  }
+}
+
+InCheckFire()
+{
+  var unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if ((unitStatus == "0") || (unitStatus == "1"))
+  {
+    enemyId = -1;
+    state = S_INMOVE;
+  }
+}
+
+InSetTargetPoint()
+{  
+  targetX = areaXLeft + random(areaXRight - areaXLeft + 1);
+  targetY = areaYTop + random(areaYBottom - areaYTop + 1);
+
+  Move(targetX, targetY);
+}
+
+main()
+{
+  //the bot behaves differently, depending the area he's in
+  if (state == S_OUTINIT)
+  {
+    PostMessage("We're rolling!");
+    OutInit();
+  }
+
+  if (state == S_OUTMOVE)
+  {
+    ScanEnemy(S_OUTFIRE);
+
+    if (enemyId == -1)
+    {
+      Move(targetX, targetY);
+    }
+
+    if (InArea())
+    {
+      PostMessage("Clear the area!");
+      enemyId = -1;
+      state = S_INMOVE;
+    }
+  }
+
+  if (state == S_OUTFIRE)
+  {
+    if (enemyId == -1)
+    {
+      state = S_OUTMOVE;
+    }
+
+    OutCheckFire();
+  }
+
+  if (state == S_INMOVE)
+  {
+    ScanEnemy(S_INFIRE);
+
+    if (enemyId == -1)
+    {
+      if (!Moving())
+      {
+        InSetTargetPoint();
+      }
+    }
+  }
+
+  if (state == S_INFIRE)
+  {
+    if (enemyId == -1)
+    {
+      state = S_INMOVE;
+    }
+
+    InCheckFire();
+  }
+}

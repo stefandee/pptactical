@@ -1,0 +1,167 @@
+// Bodyguard Bot - by Karg
+// based on the adept bot
+// search a master and protect him 
+// it may be possible to guard a friend but not to see who is shooting at him
+// if the master is dead, search another master
+// This bot is used for Pure Power Tactical Engine (http://sourceforge.net/projects/pptactical)
+
+const STATE_MASTER_SEARCH = 1;
+const STATE_GUARD_IDLE    = 2;
+const STATE_GUARD_ATTACK  = 3;
+const STATE_DEFEND        = 4;
+
+var uStatus;
+var masterId = -1, enemyId = -1, state = STATE_MASTER_SEARCH;
+
+SearchForMaster()
+{
+  var uNo, i, uid, uRel;
+
+  uNo = Scan();
+
+  if (uNo >= 0)
+  {
+    for(i = 0; i < uNo; i++)
+    {
+      uid = UnitInView(i);
+       
+      // check if unit is friendly and count its attackers
+      uRel = UnitRelation(uid);
+      if (uRel == 1 || uRel == 2)
+      {
+	// check if unit uid is dead
+	uStatus = UnitStatus(uid); 
+	if (uStatus == 1)
+	{
+	  continue;
+	}
+
+	if (uid == MyId())
+	{
+	  continue;
+	}
+
+        // look to my master
+	masterId = uid;
+	LookTo(masterId);
+	state = STATE_GUARD_IDLE;
+	PostMessage("Found you!");
+	return;
+      }
+    }
+  }
+}
+
+Defend()
+{
+}
+
+MasterGuard()
+{
+  var uRel;
+
+//  uRel = UnitRelation(masterId);
+//  if (uRel == 1 || uRel == 2)
+//  {
+    // check if master is attacked by some one
+    if (AttackerOfCount(masterId) <= 0)
+    {
+      return;
+    }
+	
+    // pick one of my master attackers - may be a random one
+    enemyId  = AttackerOf(masterId, 0);
+    if (enemyId == -1)
+    {
+      return;
+    }
+
+    // check visual range and move accordingly
+    LookTo(enemyId);
+    if (FireTo(enemyId) == 1)
+    {
+      state    = STATE_GUARD_ATTACK;
+      //PostMessage("Attacking your attacker!");
+    }
+//  }
+}
+
+main()
+{
+  var nX, nY;
+
+  if (state == STATE_MASTER_SEARCH)
+  {
+    SearchForMaster();
+  }
+
+  if (state == STATE_MASTER_SEARCH)
+  {
+    Defend();
+  }
+
+  if (state == STATE_GUARD_IDLE)
+  {
+    MasterGuard();
+  }
+
+  if (state == STATE_GUARD_IDLE)
+  {
+    if (UnitDist(masterId) >= 4 && Moving() == 0)
+    {
+      nX = UnitX(masterId) + random(2) - 1;
+      nY = UnitY(masterId) + random(2) - 1;
+
+      if (nX == UnitX(masterId)) nX++;
+      if (nY == UnitY(masterId)) nY++;
+
+      Move(nX, nY);
+    }     
+  }
+
+  if (state == STATE_MASTER_SEARCH)
+  {
+    if (Moving() == 0)
+    {
+      Move(MyX() + random(10) - 5, MyY() + random(10) - 5);
+    }
+
+    if (Moving() == 1 && random(10) > 7)
+    {
+      SetScanAngle(GetScanAngle() + random(30) - 15);
+    }
+  }
+
+  // is my target dead? (1)
+  if (state == STATE_GUARD_ATTACK)
+  {
+    uStatus = UnitStatus(enemyId);
+
+    if (uStatus == 0 || uStatus == 1 || uStatus == -1)
+    {
+      state = STATE_GUARD_IDLE;
+    }
+  }
+
+  // is my target dead? (2)
+  if (state == STATE_DEFEND)
+  {
+    uStatus = UnitStatus(enemyId);
+
+    if (uStatus == 0 || uStatus == 1 || uStatus == -1)
+    {
+      state = STATE_MASTER_SEARCH ;
+    }
+  }
+
+  // is my master dead? 
+  if (state == STATE_GUARD_IDLE || state == STATE_GUARD_ATTACK)
+  {
+    uStatus = UnitStatus(masterId); 
+
+    if (uStatus == 0 || uStatus == 1 || uStatus == -1)
+    {
+      state = STATE_MASTER_SEARCH;
+    }
+  }
+}

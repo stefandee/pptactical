@@ -1,0 +1,72 @@
+
+// mission states
+const S_INIT      = 0;
+const S_TRANSPORT = 1;
+const S_COMBAT    = 2;
+
+// batlegroup constants
+const BG_LANDSCAPE        = 1;
+const BG_PLAYER           = 2;
+const BG_PLAYER_TRANSPORT = 3;
+
+// vars
+var state = S_INIT;
+
+// functions
+ShowMap(var xs, var ys, var xe, var ye, var value)
+{
+  var i, j;
+
+  for(i = xs; i < xe; i++)
+  {
+    for(j = ys; j < ye; j++)
+    {
+      NotifyVisibilityMap(i, j, BG_PLAYER, value);
+    }
+  }
+}
+
+Init()
+{
+  state = S_TRANSPORT;
+}
+
+TransportReachedDestination()
+{
+  var x = GetUnitLogicX(0);
+  var y = GetUnitLogicY(0);
+
+  if (x <= 42 && x >= 38 && y <= 42 && y >= 38)
+  {
+    return 1;
+  }
+
+  return 0;
+}
+
+Transport()
+{
+  var x = GetUnitLogicX(0);
+  var y = GetUnitLogicY(0);
+
+  MoveCamera(x, y);
+  ShowMap(x - 4, y - 4, x + 4, y + 4, 2);
+
+  if (UnitsTransportedCount(0) == 0)
+  {
+    //PostMessage("Mission: transport unloaded!");
+  }
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_TRANSPORT)
+  {
+    Transport();
+  }
+}

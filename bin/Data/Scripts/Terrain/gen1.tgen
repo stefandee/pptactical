@@ -1,0 +1,17 @@
+main()
+{
+  var w, h, x, y;
+
+  w = GetWidth(0);
+  h = GetHeight(0);
+
+  Reset(0, 20);
+
+  for(x = w / 2 - 50; x < w / 2 + 50; x++)
+  {
+    for(y = h / 2 - 50; y < h / 2 + 50; y++)
+    {
+      Set(0, x, y, random(40));
+    }
+  }
+}

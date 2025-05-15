@@ -1,0 +1,17 @@
+var YFromX(const x)
+{
+  if ((x / 10) % 2 == 0)
+  {
+     return 0;
+  }
+  else
+  {
+    return GetParam("A");
+  }
+}
+
+var YFromX(const x)
+{
+  if (x< 8) return 0;
+  return 1;
+}

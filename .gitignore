@@ -47,8 +47,6 @@
 __recovery/
 __history/
 __astcache/
-tmp/
-bin/
 
 # MSVC temporary files
 *.pdb
@@ -76,4 +74,4 @@ lib/**/
 
 # User Data
 bin/*.txt
-bin/out/**/
+bin/out/**

@@ -1,0 +1,225 @@
+// Zone Defender Infantry Bot
+// Author: Karg
+// Date  : 26.01.2003
+// Info  : move to the defending area then behave like a camper bot:
+//         stand in a point, scan the area around, fire if someone in range
+//         sort of sentinel (i-sentinel.csl), but the scan is done differently 
+
+// states
+const S_INIT = 0;
+const S_ZONE = 5;
+const S_SCAN = 1;
+const S_FIRE = 2;
+const S_RELOCATE = 3;
+const S_RELOCATING = 4;
+
+// bot parameters
+const R_RADIUS = 5; // radius for relocation
+const R_MOBILITY = 18;
+const R_EAGLEEYES = 85;
+
+// AREA DEFINITON
+const areaXLeft = 10, areaXRight = 15, areaYTop = 36, areaYBottom = 42;
+
+var state = S_INIT;
+var enemyId = -1, myId = -1;
+
+ScanEnemy()
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan();
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(enemyId);
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1; 
+      state = S_FIRE;
+      return;
+    }
+  }
+}
+
+ScanAttackers()
+{
+  var aNo = AttackerOfCount(myId), i, uId;
+
+  if (aNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < aNo; i++)
+  {
+    uId = AttackerOf(myId, i);
+
+    SetScanAngle(0);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(90);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(180);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(270);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+  }
+
+  // my attackers are out of the visual range, just relocate 
+  LookTo(enemyId);
+  state = S_RELOCATE;
+}
+
+Relocate()
+{
+  if (!Moving())
+  {
+    // relocate around the original point, with a certain extent
+    var angle = random(360) * 3.1415 / 180.0;
+    var newX = areaXLeft + random(areaXRight - areaXLeft);
+    var newY = areaYTop  + random(areaYBottom - areaYTop);
+
+    Move(newX, newY);
+
+    state = S_RELOCATING;
+  }
+}
+
+Relocating()
+{
+  if (!Moving())
+  {
+    // relocation succesful, return to scan mode
+    state = S_SCAN;
+  }
+}
+
+Init()
+{
+  // original coordinates, so that the bot will return to its location
+  myId      = MyId();
+
+  state = S_RELOCATE;
+}
+
+CheckFire()
+{
+  const unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if (unitStatus == 0 || unitStatus == 1)
+  {
+    enemyId = -1;
+    state = S_SCAN;
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_SCAN)
+  {
+    ScanEnemy();
+
+    ScanAttackers();
+
+    // relocating when no enemy set
+    if (enemyId == -1)
+    {
+      if (random(20) >= R_MOBILITY)
+      {
+        state = S_RELOCATE;
+      }
+
+      // look around from time to time
+      if (random(100) > R_EAGLEEYES)
+      {
+        SetScanAngle(GetScanAngle() + random(20) - 10);
+      }
+    }
+  }
+
+  if (state == S_FIRE)
+  {
+    CheckFire();
+  }
+
+  if (state == S_RELOCATE)
+  {
+    Relocate();
+  }
+
+  if (state == S_RELOCATING)
+  {
+    Relocating();
+  }
+}

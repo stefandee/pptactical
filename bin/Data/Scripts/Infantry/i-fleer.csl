@@ -1,0 +1,23 @@
+main()
+{
+  var x, y;
+
+  if (MyHp() <= 80)
+  {
+    if (Moving() == 0)
+    {
+      x = MyX() + random(10) - 5;
+      y = MyY() + random(10) - 5;
+      Move(x, y);
+      LookAt(MyX() + random(15) - 7, MyY() + random(15) - 7);
+    } 
+  }
+  else
+  {
+    // not fleeing, look around
+    if (!Sweeping())
+    {
+      SetScanAngle(random(360));
+    } 
+  }
+}

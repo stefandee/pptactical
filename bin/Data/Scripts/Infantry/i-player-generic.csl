@@ -1,0 +1,295 @@
+// Player Units AI try#1 ;)
+// Author: Karg
+// Date  : 17.01.2005
+// Info  : will try to implement the reactions of a human-controlled unit
+//         goals are: 
+//         1. locate the enemy that is attacking or move if the enemy is not found (like a sniper)
+//         2. scan the surroundings and engage targets at will (without moving into pursue)
+//         3. lend a hand if a friend is attacked
+//
+//         It's combination of previously written bots. From this, one may derive variations so
+//         that for a game where the player controls few units, each unit may have "personality"
+//
+//         A certain interface may be implemented, so that certain configuration parameters may
+//         come from the human player into the script (like a behaviour style - aggresive, normal,
+//         stealth). It may be done like a script lib.
+
+// states
+const S_INIT       = 0; // for caching of various data that deserve caching 
+const S_SCAN       = 1; // looks for the enemy and check if attacked
+const S_FIRE       = 2; // fire selected enemy
+const S_RELOCATE   = 3; // relocate if attacked and enemy cannot be seen
+const S_RELOCATING = 4; // the unit is in process of moving to the new location
+
+// parameters
+const R_EAGLEEYES = 85; // probability that this unit will take a look around
+const R_ALTRUISM  = 10; // probability that a unit is aware to the status of team mates (to help them) 
+
+// internal variables
+var state   = S_INIT;
+var enemyId = -1;
+var myId    = -1; // caching
+
+ScanEnemy()
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan(0);
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(0, i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(0, enemyId);
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1; 
+      state = S_FIRE;
+      return;
+    }
+  }
+}
+
+// to be reimplemented
+ScanFriendly()
+{
+  var uNo, i, uid, uRel, uStatus, friendId;
+
+  uNo = Scan(0);
+
+  if (uNo >= 0)
+  {
+    for(i = 0; i < uNo; i++)
+    {
+      uid = UnitInView(0, i);
+       
+      // check if unit is friendly and count its attackers
+      uRel = UnitRelation(uid);
+      if (uRel == 1 || uRel == 2)
+      {
+	// check if unit uid is dead
+	uStatus = UnitStatus(uid); 
+
+	if (uStatus == 1)
+	{
+	  continue;
+	}
+
+	// check if this unit is attacked by some one
+	if (AttackerOfCount(uid) == 0)
+	{
+	  continue;
+	}
+	
+	// pick one of my friend attackers - may be a random one
+	enemyId  = AttackerOf(uid, 0);
+        friendId = uid;
+
+        if (enemyId == -1)
+	{
+	  continue;
+	}
+
+        // check visual range and move accordingly
+	LookTo(0, friendId);
+
+	if (FireTo(enemyId) == 1)
+	{
+          //enemySet = 1;
+	  state    = S_FIRE;
+	  LookTo(0, enemyId);
+	}
+
+	return;
+      }
+    }
+  }
+}
+
+ScanAttackers()
+{
+  var aNo = AttackerOfCount(myId), i, uId;
+
+  if (aNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < aNo; i++)
+  {
+    uId = AttackerOf(myId, i);
+
+    SetScanAngle(0, 0);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(0, uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(0, 90);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(0, uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(0, 180);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(0, uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+
+    SetScanAngle(0, 270);
+
+    if (FireTo(uId) == 1)
+    {
+      LookTo(0, uId);
+      enemyId = uId;
+      state = S_FIRE;
+      return;    
+    }
+  }
+
+  // my attackers are out of the visual range, scan
+  LookTo(0, enemyId);
+  state = S_RELOCATE;
+}
+
+Relocate()
+{
+  if (!Moving())
+  {
+    // relocate around the original point, with a certain extent
+    var newX = MyX() + random(5) - 3;
+    var newY = MyY() + random(5) - 3;
+
+    Move(newX, newY);
+
+    state = S_RELOCATING;
+  }
+}
+
+Relocating()
+{
+  if (!Moving())
+  {
+    // relocation succesful, return to scan mode
+    state = S_SCAN;
+  }
+}
+
+Init()
+{
+  myId      = MyId();
+
+  state     = S_SCAN;
+}
+
+CheckFire()
+{
+  const unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if (unitStatus == 0 || unitStatus == 1 || unitStatus == -1)
+  {
+    enemyId = -1;
+    state = S_SCAN;
+  }
+
+  // we should also check our status (for example, if the player
+  // asked us to move while firing) and reset it to scan
+  if (Moving())
+  {
+    enemyId = -1;
+    state = S_SCAN;
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  // the unit will only scan if set in place
+  if (state == S_SCAN && !Moving())
+  {
+    ScanEnemy();
+
+    ScanAttackers();
+
+    // relocating when no enemy set
+    if (enemyId == -1)
+    {
+      // look around from time to time
+      if (random(100) > R_EAGLEEYES)
+      {
+        SetScanAngle(0, GetScanAngle(0) + random(20) - 10);
+      }
+
+      if (random(100) > R_ALTRUISM)
+      {
+        // look for friends that need help and run to help them
+	ScanFriendly();
+      }
+    }
+  }
+
+  if (state == S_FIRE)
+  {
+    CheckFire();
+  }
+
+  if (state == S_RELOCATE)
+  {
+    Relocate();
+  }
+
+  if (state == S_RELOCATING)
+  {
+    Relocating();
+  }
+}

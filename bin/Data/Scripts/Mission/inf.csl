@@ -1,0 +1,22 @@
+// batlegroup constants
+const BG_LANDSCAPE = 1;
+const BG_PLAYER    = 2;
+
+var once = 0;
+var unit = 0;
+var died = 0;
+
+main()
+{
+  if (MissionTime() > 5 && once == 0)
+  {
+    unit = InsertInfantryAtPoint(16, 10, BG_PLAYER, 1, "r-hunter.csl");
+    once = 1;
+  }
+
+  if (MissionTime() > 35 && died == 0)
+  {
+    KillUnit(unit);
+    died = 1;
+  }
+}

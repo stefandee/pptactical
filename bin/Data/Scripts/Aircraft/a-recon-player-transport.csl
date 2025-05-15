@@ -1,0 +1,62 @@
+// Transport Helicopter
+// Author: Karg
+// Date  : 05.03.2005
+// Info  : move to a define point, unload all units, takeoff and move out of the map
+//         the mission script will then take care of removing it from the game
+
+const gLandingPoint[2]    = { 40, 40 };
+const gExtractionPoint[2] = { 10, 40 };
+
+// unit states
+const S_INIT      = 0;
+const S_TRANSPORT = 1;
+const S_MOVEOUT   = 2;
+const S_WAIT      = 3;
+
+var state = S_INIT;
+
+Init()
+{
+  UnloadAll(gLandingPoint[0], gLandingPoint[1]);
+  state = S_TRANSPORT;
+
+  PostMessage("Pilot: Closing to insertion zone...");
+}
+
+Transport()
+{
+  // have we unloaded all?
+  if(BayCount() == 0)
+  {
+     state = S_MOVEOUT;
+     Move(gExtractionPoint[0], gExtractionPoint[1]);
+  }
+}
+
+MoveOut()
+{
+  // have we reached destination?
+  if (!Moving())
+  {
+    state = S_WAIT;
+  }
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_TRANSPORT)
+  {
+    Transport();
+  }
+  
+  if (state == S_MOVEOUT)
+  {
+    MoveOut();
+  }
+}
+

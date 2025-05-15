@@ -1,0 +1,76 @@
+// Commands the units under its command to move into a formation on a certain map spot
+//
+//
+//
+
+// states
+const S_INIT = 0;
+const S_FORMATION = 1;
+const S_END = 2;
+
+// some constants
+const X_SPACING = 3;
+const Y_SPACING = 3;
+
+var state = S_INIT;
+var xDest, yDest;
+var unitIndex, row, col;
+var xThis, yThis;
+
+Init()
+{
+  // maybe do some dynamic/random coordinate arrangements
+  xDest = 25;
+  yDest = 25;
+  row   = 0;
+  col   = 0;
+
+  state = S_FORMATION;
+}
+
+Form()
+{
+  if (xThis == UnitX(unitIndex) && yThis == UnitY(unitIndex))
+  {
+    row++;
+
+    if (row > 3)
+    {
+      row = 0;
+      col++;
+    }
+
+    unitIndex++;
+
+    if (unitIndex == UnitCount())
+    {
+      state = S_END;
+    }
+  }
+  else
+  {
+    var status = UnitStatus(unitIndex);
+
+    if (status == 3)
+    {
+      xThis = xDest + row * X_SPACING;  
+      yThis = yDest + col * Y_SPACING;
+      
+      Move(unitIndex, xThis, yThis);
+      
+    }
+  }
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_FORMATION)
+  {
+    Form();
+  }
+}

@@ -1,0 +1,80 @@
+var enemyId = -1, enemySet = 0, uStatus;
+
+ScanEnemy()
+{
+  var eNo, i, uid;
+
+  if (enemySet == 0)
+  {
+    eNo = Scan(0);
+
+    if (eNo >= 0)
+    {
+      for(i = 0; i < eNo; i++)
+      {
+        uid = UnitInView(0, i); 
+        if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+	{
+	  // check if unit uid is dead
+	  uStatus = UnitStatus(uid); 
+	  if (uStatus == 1)
+	  {
+	    continue;
+	  }
+
+	  enemyId = uid; 
+          LookTo(0, enemyId);
+
+	  if (FireTo(enemyId) != 1)
+	  {
+             enemyId = -1;
+             return;
+          }
+
+          enemySet = 1;
+	  return;
+        }
+      }
+    }
+  }
+}
+
+Sweep()
+{
+  var angle, angleRad;
+
+  if (enemySet == 0 && Sweeping(0) == 0 && random(10) > 8)
+  {
+    angle = random(360);
+    //angleRad =  angle * 3.1415 / 180.0;
+    
+    SetScanAngle(0, angle);
+    //Move(MyX() + 1 * cos(angleRad), MyY() + 1 * sin(angleRad));
+  }
+}
+
+main()
+{
+  Sweep();
+  
+  ScanEnemy();
+  
+  // check if enemy is set
+  if (enemySet == 1)
+  {
+    if (UnitDist(enemyId) > WeaponRange(1))
+    {
+      enemySet = 0;
+      enemyId = -1;
+      return;
+    }
+    
+    uStatus = UnitStatus(enemyId); 
+
+    if (uStatus == 0 || uStatus == 1)
+    {
+      enemySet = 0;
+      enemyId  = -1;
+    }
+  } 
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <!-- writeDir
+            Set to "platform" if you want the writable folder to be platform specific, e.g. Windows, C:\Users\AUser\.pirongames\pptactical or Unix, ~/.pirongames/pptactical
+            Use any other value or remove it if the writable folder should be relative to the base path of the engine executable
+    -->
+    <config writeDir="local"/>
+    
+    <!-- /out mount point is reserved by the engine, please don't use! -->
+    <resources>
+        <resource path="Data" mount="/Data"/>
+    </resources>
+</document>

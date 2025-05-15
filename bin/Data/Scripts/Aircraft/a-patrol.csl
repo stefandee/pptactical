@@ -1,0 +1,31 @@
+// Patrolling Aircraft
+// Author: Karg
+// Date  : 10.08.2004
+// Info  : very simple hardcoded script that moves an aircraft between points
+
+const gPatrolPoints[3][2] = 
+  {
+    { 20, 5 },
+    { 45, 40 },
+    { 5, 40 }
+  };
+
+var lCrt = 0;
+
+main()
+{
+  if (!Moving())
+  {
+    PostMessage("Unit changing destination...");
+
+    Move(gPatrolPoints[lCrt][0], gPatrolPoints[lCrt][1]);
+
+    lCrt++;
+
+    if (lCrt > 2)
+    {
+      lCrt = 0;
+    }
+  }
+}
+

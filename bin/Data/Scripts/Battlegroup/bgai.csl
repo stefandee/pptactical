@@ -1,0 +1,7 @@
+main()
+{
+  if (ZoneEvaluateThreat(5, 5, 10, 10) == 50)
+  {
+     PostMessage("Whoa!");
+  }
+}

@@ -1,0 +1,75 @@
+var mov, scan, attack, uStatus;
+var enemyId = -1, enemySet = 0;
+
+ScanEnemy()
+{
+  var eNo, i, uid;
+
+  if (enemySet == 0)
+  {
+    eNo = Scan(0);
+
+    if (eNo >= 0)
+    {
+      for(i = 0; i < eNo; i++)
+      {
+        uid = UnitInView(0, i);
+        
+        // check if unit is an enemy and is in weapon range
+        if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+	{
+	  // check if unit uid is dead
+	  uStatus = UnitStatus(uid); 
+	  if (uStatus == 1)
+	  {
+	    continue;
+	  }
+
+          enemyId = uid; 
+          LookTo(0, enemyId);
+
+	  if (FireTo(enemyId) != 1)
+	  {
+             enemyId = -1;
+	     continue;
+          }
+
+          enemySet = 1;
+	  return;
+        }
+      }
+    }
+  }
+}
+
+main()
+{
+  ScanEnemy();
+  
+  if (Moving() == 0 && enemySet == 0)
+  {
+    Move(MyX() + random(10) - 5, MyY() + random(10) - 5);
+  }
+
+  if (Moving() == 1 && random(10) > 7)
+  {
+    SetScanAngle(0, GetScanAngle(0) + random(30) - 15);
+  }
+
+  if (enemySet == 1 && UnitDist(enemyId) > WeaponRange(1))
+  {
+    enemySet = 0;
+    enemyId = -1;
+  }
+
+  if (enemySet == 1)
+  {
+    uStatus = UnitStatus(enemyId); 
+
+    if (uStatus == 0 || uStatus == 1)
+    {
+      enemySet = 0;
+      enemyId  = -1;
+    }
+  }
+}

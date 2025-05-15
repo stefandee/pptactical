@@ -1,0 +1,20 @@
+var time = 0;
+var o1 = 0;
+var o2 = 0;
+
+main()
+{
+  time = MissionTime();
+
+  if (time > 20 && o1 == 0)
+  {
+    MoveCamera(10, 10);
+    o1 = 1;
+  }
+
+  if (time > 60 && o2 == 0)
+  {
+    MoveCamera(30, 30);
+    o2 = 1;
+  }
+}

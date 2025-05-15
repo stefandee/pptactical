@@ -1,0 +1,20 @@
+var delay = 0;
+
+main()
+{
+  var x;
+
+  delay++;
+
+  if (delay > 20)
+  {
+    x = LayerGetX(0);
+
+    x = x - 8 + random(8);
+
+    LayerSetX(0, x);
+
+    delay = 0;
+  }
+}
+

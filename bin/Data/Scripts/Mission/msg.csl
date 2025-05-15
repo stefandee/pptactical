@@ -1,0 +1,7 @@
+main()
+{
+  if (MissionTime()>200)
+  {
+    PostMessage("Go go go!!!");
+  }
+}

@@ -1,0 +1,121 @@
+// DugIn TankBot
+// Author: Karg
+// Date  : 29.01.2003
+// Info  : stand in a point, scan the area around, move turret accordingly
+//         it's the vehicle counterpart of the camper bot (i-camper.csl)
+
+// STATES
+const S_INIT = 0;
+const S_SCAN = 1;
+const S_FIRE = 2;
+
+var state = S_INIT;
+var enemyId = -1, myId = -1;
+
+ScanEnemy()
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan();
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(enemyId);
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1; 
+      state = S_FIRE;
+      return;
+    }
+  }
+}
+
+Init()
+{
+ PostMessage("In position!");
+
+  // original coordinates, so that the bot will return to its location
+  myId      = MyId();
+
+  state = S_SCAN;
+}
+
+CheckFire()
+{
+  const unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if (unitStatus == 0 || unitStatus == 1)
+  {
+    enemyId = -1;
+    state = S_SCAN;
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_SCAN)
+  {
+    ScanEnemy();
+
+    var choice = random(100);
+
+    // look around from time to time
+    if (choice > 80 && enemyId == -1)
+    {
+      SetScanAngle(GetScanAngle() + random(20) - 10);
+      SetTurretSense(GetScanAngle());
+    }
+
+    // look in other directions as well
+    if (choice < 80 && choice > 70 && enemyId == -1)
+    {
+      SetScanAngle(random(360));
+      SetTurretSense(GetScanAngle());
+    }
+  }
+
+  if (state == S_FIRE)
+  {
+    CheckFire();
+  }
+}

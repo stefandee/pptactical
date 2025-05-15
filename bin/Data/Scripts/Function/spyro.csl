@@ -1,0 +1,9 @@
+var XParam(const u)
+{
+  return GetParam("A") * cos(u) + GetParam("B") * cos(GetParam("C") * u);
+}
+
+var YParam(const u)
+{
+  return GetParam("A") * sin(u) + GetParam("B") * sin(GetParam("C") * u);
+}

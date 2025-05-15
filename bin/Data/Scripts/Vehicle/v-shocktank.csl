@@ -1,0 +1,177 @@
+// Shock Tank Bot
+// Author: Karg
+// Date  : 31.01.2003
+// Info  : This tank bot implements a tank that engages its targets while standing on tracks
+//         since firing while moving have a penalty (actually it will depend on a crew skill 
+//         called "piloting")
+//         
+//         In the Pure Power universe, Rion Empire tanks have two tactical roles: one to 
+//         attract the enemy fire (shocktanks) and the other to engage targets while moving
+//         (interceptor tanks)
+
+// states
+const S_INIT = 0;
+//const S_SCAN = 1;
+const S_TURRETALIGN = 2;
+const S_RELOCATE = 3;
+const S_RELOCATING = 4;
+const S_FIRE = 5;
+
+var state = S_INIT;
+var enemyId = -1, myId = -1;
+var targetX = -1, targetY = -1;
+var degreeAngle = 0;
+
+ScanEnemy()
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan();
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1 || uStatus == 0)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(enemyId);
+
+      if (MyHp() > 30)
+      {
+        Stop();
+      }
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1; 
+      state = S_FIRE;
+      return;
+    }
+  }
+}
+
+Relocate()
+{
+  if (!Moving())
+  {
+    // relocate aroun the original point, with a certain extent
+    if (targetX == -1 || targetY == -1)
+    {
+      degreeAngle = random(360);
+      var angle = degreeAngle * 3.1415 / 180.0;
+
+      SetTurretSense(degreeAngle);
+
+      targetX = MyX() + random(10) * cos(angle);
+      targetY = MyY() - random(10) * sin(angle);
+
+      LookAt(targetX, targetY);
+    }
+
+    state = S_TURRETALIGN;
+  }
+}
+
+Relocating()
+{
+  if (!Moving())
+  {
+    state = S_RELOCATE;
+    targetX = -1;
+    targetY = -1;
+  }
+}
+
+TurretAligning()
+{
+  if (abs(degreeAngle - GetTurretSense()) < 45)
+  {
+    Move(targetX, targetY);
+
+    state = S_RELOCATING;
+  }
+}
+
+Init()
+{
+ PostMessage("The hunt is on");
+
+  // get the id so that we won't call every time to MyID
+  myId      = MyId();
+
+  state = S_RELOCATE;
+}
+
+CheckFire()
+{
+  const unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if (unitStatus == 0 || unitStatus == 1)
+  {
+    SetTurretSense(degreeAngle);
+    enemyId = -1;
+    state = S_TURRETALIGN;
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_RELOCATE)
+  {
+    Relocate();
+  }
+
+  if (state == S_RELOCATING)
+  {
+    Relocating(); 
+
+    ScanEnemy();
+  }
+
+  if (state == S_FIRE)
+  {
+    CheckFire();
+  }
+
+  if (state == S_TURRETALIGN)
+  {
+    TurretAligning();
+
+    ScanEnemy();
+  }
+}

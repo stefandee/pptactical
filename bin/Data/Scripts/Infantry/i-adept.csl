@@ -1,0 +1,97 @@
+// Adept Bot - by Karg
+// scan for friendly units and follow them
+// this bot cant attack yet
+
+const STATE_SEARCH = 1;
+const STATE_FOLLOW = 5;
+
+var uStatus;
+var state = STATE_SEARCH, friendId = -1;
+
+ScanFriendly()
+{
+  var uNo, i, uid, uRel;
+
+  uNo = Scan();
+
+  if (uNo >= 0)
+  {
+    for(i = 0; i < uNo; i++)
+    {
+      uid = UnitInView(i);
+       
+      // check if unit is friendly and count its attackers
+      uRel = UnitRelation(uid);
+      if (uRel == 1 || uRel == 2)
+      {
+	// check if unit uid is dead
+	uStatus = UnitStatus(uid); 
+	if (uStatus == 1)
+	{
+	  continue;
+	}
+
+	if (uid == MyId())
+	{
+	  continue;
+	}
+
+        // look to my master
+	friendId = uid;
+	LookTo(friendId);
+	state = STATE_FOLLOW;
+	PostMessage("Found you!");
+	return;
+      }
+    }
+  }
+}
+
+
+main()
+{
+  var nX, nY;
+
+  if (state == STATE_SEARCH)
+  {
+    ScanFriendly();
+  }
+
+  if (state == STATE_FOLLOW)
+  {
+    if (UnitDist(friendId) >= 4 && Moving() == 0)
+    {
+      nX = UnitX(friendId) + random(2) - 1;
+      nY = UnitY(friendId) + random(2) - 1;
+
+      if (nX == UnitX(friendId)) nX++;
+      if (nY == UnitY(friendId)) nY++;
+
+      Move(nX, nY);
+    }     
+  }
+
+  if (state == STATE_SEARCH)
+  {
+    if (Moving() == 0)
+    {
+      Move(MyX() + random(10) - 5, MyY() + random(10) - 5);
+    }
+
+    if (Moving() == 1 && random(10) > 7)
+    {
+      SetScanAngle(GetScanAngle() + random(30) - 15);
+    }
+  }
+
+  // my master is dead? 
+  if (state == STATE_FOLLOW)
+  {
+    uStatus = UnitStatus(friendId); 
+
+    if (uStatus == 0 || uStatus == 1 || uStatus == -1)
+    {
+      state = STATE_SEARCH;
+    }
+  }
+}

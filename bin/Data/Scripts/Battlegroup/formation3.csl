@@ -1,0 +1,124 @@
+// Randomply scans the unit status; if all units are not moving, select a new formation style
+// and command each unit to go at its designated position
+
+// states
+const S_FORMATION = 1;
+const S_ANNALYZE  = 2;
+const S_WAIT      = 3;
+
+// grid formation
+const X_SPACING = 3;
+const Y_SPACING = 3;
+
+// constants - circle formation
+const RADIUS = 5;
+
+var state = S_FORMATION;
+var xDest, yDest;
+var row, col;
+var xThis, yThis;
+var waitTime = 0;
+
+ChangeFormationGrid()
+{
+  var i;
+   
+  for(i = 0; i < UnitsCount(); i++)
+  {
+      xThis = xDest + row * X_SPACING;  
+      yThis = yDest + col * Y_SPACING;
+      
+      Move(i, xThis, yThis);      
+
+      row++;
+
+      if (row > 3)
+      {
+        row = 0;
+        col++;
+      }
+  }
+}
+
+ChangeFormationCircle()
+{
+  var angle = 2 * 3.14 / UnitsCount();
+  var i;
+
+  for(i = 0; i < UnitsCount(); i++)
+  {
+      xThis = xDest + RADIUS * sin(angle * i);  
+      yThis = yDest + RADIUS * cos(angle * i);
+      
+      Move(i, xThis, yThis);      
+  }
+}
+
+SelectFormation()
+{
+  // maybe do some dynamic/random coordinate arrangements
+  xDest = 10 + random(30);
+  yDest = 10 + random(30);
+
+  row   = 0;
+  col   = 0;
+
+  var formation = random(2);
+
+  if (formation == 0)
+  {
+    ChangeFormationGrid();
+  }
+
+  if (formation == 1)
+  {
+    ChangeFormationCircle();
+  }
+
+  state = S_ANNALYZE;
+}
+
+Annalyze()
+{
+  var i;
+
+  for(i = 0; i < UnitsCount(); i++)
+  {
+    // unit moving?
+    if (UnitStatus(i) == 2)
+    {
+      return;
+    }
+  }
+
+  state = S_FORMATION;
+}
+
+Wait()
+{
+  waitTime++;
+
+  if (waitTime > 5)
+  {
+    waitTime = 0;
+    state = S_ANNALYZE;
+  }
+}
+
+main()
+{
+  if (state == S_FORMATION)
+  {
+    SelectFormation();
+  }
+
+  if (state == S_ANNALYZE)
+  {
+    Annalyze();
+  }
+
+  if (state == S_WAIT)
+  {
+    Wait();
+  }
+}

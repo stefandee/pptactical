@@ -1,0 +1,170 @@
+// Artillery Bot
+// Author: Karg
+// Date  : 29.01.2003
+// Info  : Simple artillery system that executes suppress fire (upon an area, of course)
+//         if ordered to attack, this artillery moves at the safest possible distance
+//         and fires upon target zone. 
+//
+//         The script will also check to see if the target area is visible and, if so,
+//         will try to get a lock on a unit located there
+//
+//         Use this bot in a battlegroup that knows how to handle artillery or give it
+//         the fire order through a mission script AttackGround function
+
+// states
+const S_INIT = 0;
+const S_FIRE = 2;
+const S_SETTARGET = 3;
+//const S_RELOCATE = 3;
+//const S_RELOCATING = 4;
+const S_MOVEINPOSITION = 5;
+const S_MOVINGINPOSITION = 6;
+
+// bot parameters
+const fireZoneX = 40, fireZoneY = 40; 
+const R_RADIUS = 5; // radius for target zone
+
+var state = S_INIT;
+var myId = -1;
+var targetX = -1, targetY = -1; // current target point coordinates
+var counter = 0, projectiles_to_fire = 0;
+
+MoveInPosition()
+{
+  if (!Moving())
+  {
+    // relocate so that the target is in weapon range
+
+    // radius of the circle where the artillery will be placed
+    var rad = WeaponRange(1) - 1;
+    
+    // my coordinates, cached so we won't call the function every time
+    var myx = MyX();
+    var myy = MyY();
+
+    // destination coordinates
+    var newX1 = -1, newX2 = -1;
+    var newY1 = -1, newY2 = -1;
+
+    if (targetY == myy)
+    {
+      newX1 = targetX;
+      newX2 = targetX;
+      newY1 = targetY - rad;
+      newY2 = targetY + rad;
+    }
+    else
+    {
+      // get the intersection point between the line MyPosition-Target and the circle
+      // centered in Target with radius WeaponRange-1
+      var m = (myx - targetX)/(myy - targetY); 
+
+      newY1 = rad / (m*m + 1.0) + targetY;
+      newY2 = -rad / (m*m + 1.0) + targetY;
+      newX1 = (newY1 - targetY) * m + targetX;
+      newX2 = (newY2 - targetY) * m + targetX;
+    }
+
+    // get the minimum distance and select the right points
+    if (dist2D(myx, newX1, myy, newY1) < dist2D(myx, newX2, myy, newY2))
+    {
+      Move(newX1, newY1);
+    }
+    else
+    {
+      Move(newX2, newY2);
+    }
+
+
+    state = S_MOVINGINPOSITION;
+  }
+}
+
+MovingInPosition()
+{
+  if (!Moving())
+  {
+    // relocation succesful, resume fire mission
+    PostMessage("Artillery barrage ready!");
+    state = S_FIRE;
+  }
+}
+
+Init()
+{
+  PostMessage("Artillery in position!");
+
+  myId      = MyId();
+  targetX = fireZoneX;
+  targetY = fireZoneY;
+
+  state = S_SETTARGET;
+}
+
+var InRange()
+{
+  if (dist2D(MyX(), MyY(), targetX, targetY) < WeaponRange(1))
+  {
+    return 1;
+  }
+
+  return 0;
+}
+
+SetTarget()
+{
+  targetX = fireZoneX + random(2*R_RADIUS) - R_RADIUS;
+  targetY = fireZoneY + random(2*R_RADIUS) - R_RADIUS;
+  projectiles_to_fire = random(4) + 1;
+  counter = 0;
+}
+
+ExecuteFire()
+{
+  counter++;
+  
+  if (counter == projectiles_to_fire)
+  {
+    state = S_SETTARGET;
+    return;
+  }
+
+  if (InRange() == 0)
+  {
+    state = S_MOVEINPOSITION;
+  }
+  else
+  {
+    FireAt(targetX, targetY);
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_SETTARGET)
+  {
+    SetTarget();
+    state = S_FIRE;
+  }
+
+  if (state == S_FIRE)
+  {
+    ExecuteFire();
+  }
+
+  if (state == S_MOVEINPOSITION)
+  {
+    MoveInPosition();
+  }
+
+  if (state == S_MOVINGINPOSITION)
+  {
+    MovingInPosition();
+  }
+}

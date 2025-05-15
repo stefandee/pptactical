@@ -1,0 +1,212 @@
+// Interceptor Tank Bot
+// Author: Karg
+// Date  : 02.01.2003
+// Info  : Swarm around an enemy, firing while moving
+//         The script does not take into consideration the minimum fire range for a weapon
+//         so it actually may find itself swarming around the enemy at close range and being unable
+//         to fire 
+
+// states
+const S_INIT = 0;
+const S_RELOCATE = 3;
+const S_RELOCATING = 4;
+const S_COMBATSETUP = 5;
+const S_COMBAT = 6;
+
+var state = S_INIT, targetX, targetY, enemyLastX, enemyLastY;
+var enemyId = -1, myId = -1;
+
+ScanEnemy()
+{
+  var eNo, i, uid, uStatus;
+
+  // he's already got an enemy
+  if (enemyId != -1)
+  {
+    return;
+  }
+
+  eNo = Scan();
+
+  // no enemy in range
+  if (eNo <= 0)
+  {
+    return;
+  }
+
+  for(i = 0; i < eNo; i++)
+  {
+    uid = UnitInView(i);
+        
+    // check if unit is an enemy and is in weapon range
+    if (UnitRelation(uid) == 3 && UnitDist(uid) < WeaponRange(1))
+    {
+      // check if unit uid is dead
+      uStatus = UnitStatus(uid);
+      
+      if (uStatus == 1)
+      {
+	continue;
+      }
+
+      enemyId = uid; 
+      LookTo(enemyId);
+
+      if (FireTo(enemyId) != 1)
+      {
+        enemyId = -1;
+        continue;
+      }
+
+      //enemyId = -1;
+      //PostMessage("enemy in range");
+      state = S_COMBATSETUP;
+      return;
+    }
+  }
+}
+
+Relocate()
+{
+  if (!Moving())
+  {
+    // relocate, far away
+    var angle = random(360) * 3.1415 / 180.0;
+    var newX = MyX() + (5 + random(15)) * cos(angle);
+    var newY = MyY() + (5 + random(15)) * sin(angle);
+
+    //PostMessage("M:" | MyX() | "," | MyY() | " - " | "N:" | newX | "," | newY);
+    Move(newX, newY);
+
+    state = S_RELOCATING;
+  }
+}
+
+Relocating()
+{
+  if (!Moving())
+  {
+    Stop();
+    state = S_RELOCATE;
+  }
+}
+
+Init()
+{
+  myId  = MyId();
+  state = S_RELOCATE;
+}
+
+CombatSetup()
+{
+  // re-check the enemy status
+  //if (enemyId == -1)
+  //{
+  //  state = S_RELOCATE;
+  //  return;
+  //}
+
+  //var uStatus = UnitStatus(enemyId);
+  
+  //if (uStatus == 0 || uStatus == 1)
+  //{
+  //  enemyId = -1;
+  //  state = S_RELOCATE;
+  //  return;
+  //}
+
+  // we have a valid enemy :)
+  var enemyLastX = UnitX(enemyId);
+  var enemyLastY = UnitY(enemyId);
+
+  //
+  // compute the attack point
+  //
+
+  // the tank will move to this point, making a close
+  // run to the enemy; the attack point is located
+  // on a circle centered in the enemy with radius
+  // the minimum distance between the enemy and the tank
+  // or weaponrange
+
+  var myx = MyX(), myy = MyY();
+  var dist = sqrt(pow(myx - enemyLastX, 2) + pow(myy - enemyLastY, 2));
+  
+  if (dist > WeaponRange(1) - 1)
+  {
+    dist = WeaponRange(1) - 1;
+  }
+
+  // the dist is now correct, let's find out the target point
+  var angle = 90 + random(45);
+  var cos1 = cos(angle * 3.1415 / 180);
+  var sin1 = sin(angle * 3.1415 / 180);
+
+  targetX = (myx - enemyLastX) * cos1 - (myy - enemyLastY) * sin1 + enemyLastX;
+  targetY = (myx - enemyLastY) * sin1 + (myy - enemyLastY) * cos1 + enemyLastY;
+
+  // clamp to the weapon range, later
+
+  LookAt(enemyLastX, enemyLastY);
+  Move(targetX, targetY);
+
+  //PostMessage("T:" | targetX | "," | targetY | " - " | "M:" | myx | "," | myy | " - " | "E:" | enemyLastX | "," | enemyLastY);
+
+  state = S_COMBAT;
+}
+
+Combat()
+{
+  const unitStatus = UnitStatus(enemyId);
+  
+  // if the enemy is no longer in visual range
+  // if the enemy is dead
+  // then change status to scaning
+  if (unitStatus == 0 || unitStatus == 1 || UnitDist(enemyId) > WeaponRange(1))
+  {
+    enemyId = -1;
+    state = S_RELOCATE;
+    PostMessage("bleah");
+    return;
+  }
+
+  if (!Moving())
+  {
+    state = S_COMBATSETUP;
+  }
+}
+
+main()
+{
+  // state machine switcher
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_RELOCATE)
+  {
+    Relocate();
+  } 
+
+  if (state == S_RELOCATING)
+  {
+    ScanEnemy();
+
+    if (enemyId == -1)
+    {
+      Relocating();
+    } 
+  }
+
+  if (state == S_COMBATSETUP)
+  {
+    PostMessage("combat setup");
+    CombatSetup();
+  }
+
+  if (state == S_COMBAT)
+  {
+    Combat();
+  }
+}

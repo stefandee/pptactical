@@ -1,0 +1,54 @@
+// Tank Battle Mission Script
+// Author: Karg
+// Date  : 17.02.2003
+// Info  : just a mission script
+
+// mission states
+const S_INIT = 0;
+const S_END = 3;
+
+// batlegroup constants
+const BG_LANDSCAPE  = 1;
+const BG_PLAYER     = 2;
+const BG_RION       = 11;
+const BG_ENEMY      = 22;
+
+// vars
+var state = S_INIT;
+
+// functions
+ShowMap(var xs, var ys, var xe, var ye, var value)
+{
+  var i, j;
+
+  for(i = xs; i < xe; i++)
+  {
+    for(j = ys; j < ye; j++)
+    {
+      NotifyVisibilityMap(i, j, BG_PLAYER, value);
+    }
+  }
+}
+
+Init()
+{
+  // show the map to the player so that he may enjoy the battle
+  ShowMap(0, 0, 50, 50, 2);
+
+  // post some messages
+  PostMessage("Tank Battle");
+  PostMessage("-------------------");
+  PostMessage("v1.00");
+
+  // change states
+  state = S_END;
+}
+
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+}

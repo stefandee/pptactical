@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <!-- uncomment this line for verbose logs. value should be in 1..9 range. uncomment/delete or set value to 0 if verbose logs are not necessary -->
+    <!--<VerboseLogLevel value="9" />-->
+
+    <ResolutionWidth value="1024" />
+    <ResolutionHeight value="768" />
+    <Fullscreen value="false" />
+
+    <TimerUpdatePeriod value="20" />
+
+    <TestMap value="setonfire0013_script.ppm" />  
+    
+    <WindowTitle value="Pure Power Tactical Engine 1.0.0" />
+    
+    <!-- enables selection of neutral units -->
+    <!--<SelectNeutralUnits value="false"/>-->
+    
+    <!-- enables hints when hovering over neutral units -->
+    <!--<NeutralUnitHint value="true"/>-->
+</document>
+

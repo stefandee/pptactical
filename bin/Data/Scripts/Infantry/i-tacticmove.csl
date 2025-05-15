@@ -1,0 +1,52 @@
+// Template Infantry with Tactic Actions
+// Author: Karg
+// Date  : 01.12.2005
+// Info:
+// this script is a template to show how "tactic" actions work
+// a tactic action is defined by a specific script function and
+// you'll have total control on how the unit performs this action,
+// overriding the default "non-tactic" one
+//
+// for example, a "tactic" move may consists of a series of 
+// move - stop - scan - move cycle, so that the unit behaviour
+// will resemble the real world actions; afterall, soldiers are
+// not robots that will move from A to B in straight line. the
+// applications are limitless :)
+//
+// if you dont want to micro-manage an action (most of the games
+// dont actually require it), simply dont implement OnActionTacticXXX
+// function; if you have it there and it's empty, the unit will do
+// nothing
+//
+// of course, you may easily combine tactic functions with a behavior
+
+var tempTargetX, tempTargetY;
+
+//
+// Simply wander around, will not reach the destination too soon tho :)
+//
+OnActionTacticMove(var targetX, var targetY)
+{
+  if (Moving() == 0)
+  {
+      tempTargetX = MyX() + random(10) - 5;
+      tempTargetY = MyY() + random(10) - 5;
+      Move(tempTargetX, tempTargetY);
+  }
+}
+
+OnActionTacticAttack()
+{
+}
+
+OnActionTacticAttackGround()
+{
+}
+
+OnActionTacticPatrol()
+{
+}
+
+main()
+{
+}

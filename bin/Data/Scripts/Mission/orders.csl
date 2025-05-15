@@ -1,0 +1,22 @@
+// batlegroup constants
+const BG_LANDSCAPE = 1;
+const BG_PLAYER    = 2;
+
+var once = 0;
+var move = 0;
+var unit = 0;
+
+main()
+{
+  if (MissionTime() > 5 && once == 0)
+  {
+    unit = InsertInfantryAtPoint(16, 10, BG_PLAYER, 1, "");
+    once = 1;
+  }
+
+  if (MissionTime() > 250 && move == 0)
+  {
+    Move(unit, 16, 15);
+    move = 1;
+  }
+}

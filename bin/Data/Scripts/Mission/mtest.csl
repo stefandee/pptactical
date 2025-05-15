@@ -1,0 +1,9 @@
+void main()
+{
+  var ce_chestie;
+
+  if (MissionTimer()>200)
+  {
+    InsertInfantry(50, 50, "Elite");
+  }
+}

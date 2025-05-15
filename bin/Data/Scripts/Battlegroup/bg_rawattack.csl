@@ -1,0 +1,15 @@
+main()
+{
+   var EnemyCount;
+
+   EnemyCount = SeekEnemies();
+
+   if (EnemyCount == 0)
+   {
+      // retreat to zone
+   }
+   else
+   {
+      AttackRandomEnemy();
+   }
+}

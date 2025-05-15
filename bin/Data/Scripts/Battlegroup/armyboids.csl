@@ -1,0 +1,133 @@
+// Boids behavior for a battlegroup
+// Rules:
+// - steer to avoid local neighbours
+// - steer to average direction of neighbours
+// - steer toward mass center of neighbours
+
+const MIN_DIST = 3;
+const VICINITY = 6;
+
+const normaldir[8][2] = 
+{
+  {0, -1},
+  {1, -1}, 
+  {1,  0}, 
+  {1,  1},
+  {0,  1}, 
+  {-1, 1}, 
+  {-1, 0},
+  {-1,-1}
+};
+
+const reverseDir[8][2] =
+{
+  {0,  1},
+  {-1, 1},
+  {-1, 0},
+  {-1,-1},
+  {0, -1},
+  {1, -1},
+  {1,  0},
+  {1,  1}
+};
+
+// average on x for 
+var avgx = 0, avgy = 0;
+
+AvgXY(var index)
+{
+  var i, localx, localy, sumx = 0, sumy = 0, n = 0, thisx, thisy;
+
+  thisx = UnitX(index);
+  thisy = UnitY(index);
+
+  for(i = 0; i < UnitsCount(); i++)
+  {
+    if (i == index)
+    {
+      continue;
+    }
+
+    localx = UnitX(i);
+    localy = UnitY(i);
+
+    if (dist2D(localx, localy, thisx, thisy) < VICINITY)
+    {
+      sumx += localx;
+      sumy += localy;
+      n++;
+    }
+  }
+
+  if (n == 0)
+  {
+    avgx = thisx;
+    avgy = thisy;
+  }
+  else
+  {
+    avgx = sumx / n;
+    avgy = sumy / n;
+  }
+}
+
+Separation()
+{
+  var i, j;
+  var thatx, thaty, thisx, thisy, dir;
+
+  for(i = 0; i < UnitsCount(); i++)
+  {
+    thisx = UnitX(i);
+    thisy = UnitY(i);
+
+    for(j = 0; j < UnitsCount(); j++)
+    {
+      if (i == j)
+      {
+        continue;
+      }
+
+      thatx = UnitX(j);
+      thaty = UnitY(j);
+
+      if (dist2D(thatx, thaty, thisx, thisy) < MIN_DIST)
+      {
+        dir = DirFromPoints(thisx, thisy, thatx, thaty);
+
+	Move(i, thisx + 15 * reverseDir[dir][0], thisy + 15 * reverseDir[dir][1]);
+	continue;
+      }
+    }
+  }
+}
+
+Alignment()
+{
+}
+
+Cohesion()
+{
+  var i, dir;
+
+  for(i = 0; i < UnitsCount(); i++)
+  {
+    AvgXY(i);
+
+    if (avgx == 0 && avgy == 0)
+    {
+      continue;
+    }
+
+    dir = DirFromPoints(UnitX(i), UnitY(i), avgx, avgy);
+
+    Move(i, UnitX(i) + 15 * normaldir[dir][0], UnitY(i) + 15 * normaldir[dir][1]);
+  }
+}
+
+main()
+{
+  Separation();
+  Alignment();
+  Cohesion();
+}

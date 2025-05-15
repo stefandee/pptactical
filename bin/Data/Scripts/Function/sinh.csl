@@ -1,0 +1,5 @@
+var YFromX(const x)
+{
+  return sinh(x);
+}
+

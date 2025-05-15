@@ -1,0 +1,72 @@
+const S_INIT = 0;
+const S_CHECK_POSITION = 1;
+const S_SELECT_POSITION = 2;
+const S_FINISHED = 3;
+
+// update with the actual count
+const WAYPOINTS_COUNT = 3;
+
+// define here the waypoints
+const WAYPOINTS[WAYPOINTS_COUNT][2] = {
+  {1, 1},
+  {10, 10},
+  {10, 20}
+}
+
+var state = S_INIT;
+var targetWaypointIndex = 0;
+
+Init()
+{
+  // do some init if necessary
+  PostMessage("Infantry initialized");
+  
+  state = S_SELECT_POSITION;
+}
+
+SelectPosition()
+{
+  if (!Moving())
+  {
+    Move(WAYPOINTS[targetWaypointIndex][0], WAYPOINTS[targetWaypointIndex][1]);
+  }
+}
+
+CheckPosition()
+{
+  var myx = MyX();
+  var myy = MyY();
+  
+  if (!Moving() && MyX() == WAYPOINTS[targetWaypointIndex][0] && MyY() == WAYPOINTS[targetWaypointIndex][1])
+  {
+    targetWaypointIndex++;
+    
+    if (targetWaypointIndex >= WAYPOINTS_COUNT)
+    {
+      // probably needs to be removed by the mission script
+      state = S_FINISHED;
+    }
+    else
+    {
+      state = S_SELECT_POSITION;
+    }
+  }
+}
+
+main()
+{
+  if (state == S_INIT)
+  {
+    Init();
+  }
+
+  if (state == S_SELECT_POSITION)
+  {
+    SelectPosition();
+  }
+  
+  if (state == S_CHECK_POSITION)
+  {
+    CheckPosition();
+  }
+}
