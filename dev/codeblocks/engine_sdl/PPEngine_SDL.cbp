@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PPTactical Engine (SDL)" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../../bin/PPTactical_SDL_mingw.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../../../bin" />
+				<Option object_output="../../../tmp/engine_codeblocks" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-Wmain" />
+					<Add option="-m64" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-m64" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Debug;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-m64" />
+			<Add option="-std=c++11" />
+			<Add option="-fpermissive" />
+			<Add option="-D__int8=char" />
+			<Add option="-D__int16=short" />
+			<Add option="-D__int32=int" />
+			<Add option="-DPPT_USE_SDL" />
+			<Add option="-DPP_TEST_VERSION" />
+			<Add option="-DZC_WIN" />
+			<Add option="-DTARGET_SDL2" />
+			<Add option="-DELPP_NO_DEFAULT_LOG_FILE" />
+			<Add directory="../../../lib/gametoolkit/lib/easyloggingpp-9.97.1" />
+			<Add directory="../../../lib/gametoolkit/lib/physfs-2.0.3" />
+			<Add directory="../../../lib/gametoolkit/lib/tinyxml2" />
+			<Add directory="../../../lib/SDL2_mingw/SDL2-2.32.6/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="../../../lib/SDL2_mingw/SDL2_ttf-2.24.0/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="../../../lib/SDL2_mingw/SDL2_mixer-2.8.1/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="../../../lib/SDL2_mingw/SDL2_image-2.8.8/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="../../../src/Common" />
+			<Add directory="../../../src/Engine" />
+			<Add directory="../../../src/Engine/Interface" />
+			<Add directory="../../../src/Engine/SubSys" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/math" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/MiniCsl" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/System/SDL" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/Gui" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/Archive" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/RegEx" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib" />
+			<Add directory="../../../lib/gametoolkit/src/cpp/Common/vfs" />
+			<Add directory="../../../src/Engine/Universe" />
+		</Compiler>
+		<Linker>
+			<Add option="-static-libstdc++" />
+			<Add option="-static-libgcc" />
+			<Add option="-m64" />
+			<Add option="-mwindows" />
+			<Add option="-lstdc++fs" />
+			<Add library="../../../lib/SDL2_mingw/SDL2-2.32.6/x86_64-w64-mingw32/lib/libSDL2.dll.a" />
+			<Add library="../../../lib/SDL2_mingw/SDL2-2.32.6/x86_64-w64-mingw32/lib/libSDL2main.a" />
+			<Add library="../../../lib/SDL2_mingw/SDL2_image-2.8.8/x86_64-w64-mingw32/lib/libSDL2_image.dll.a" />
+			<Add library="../../../lib/SDL2_mingw/SDL2_ttf-2.24.0/x86_64-w64-mingw32/lib/libSDL2_ttf.dll.a" />
+			<Add library="../../../lib/SDL2_mingw/SDL2_mixer-2.8.1/x86_64-w64-mingw32/lib/libSDL2_mixer.dll.a" />
+			<Add directory="../../../lib/SDL2_mingw" />
+		</Linker>
+		<Unit filename="../../../lib/gametoolkit/lib/easyloggingpp-9.97.1/easylogging++.cc" />
+		<Unit filename="../../../lib/gametoolkit/lib/easyloggingpp-9.97.1/easylogging++.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/archivers/dir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/extras/physfsrwops.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/extras/physfsrwops.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs_byteorder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs_casefolding.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs_internal.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs_platforms.h" />
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/physfs_unicode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/physfs-2.0.3/platform/windows.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/lib/tinyxml2/tinyxml2.cpp" />
+		<Unit filename="../../../lib/gametoolkit/lib/tinyxml2/tinyxml2.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/ObjectStream.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/ObjectStream.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Serializable.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Serializable.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream_ANSI_C.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream_ANSI_C.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream_PhysFS.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/Stream_PhysFS.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/XmlSerializable.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Archive/XmlSerializable.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/BitOp.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/BitOp.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/Cfg.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/Cfg.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgBin.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgBin.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgTxt.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgTxt.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgXml.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Cfg/CfgXml.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/ColorConv.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/ColorConv.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGen.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGen.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGenKernel.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGenKernel.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGenRandom.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysGenRandom.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysItem.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/EcoSysGen/EcoSysItem.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/ExprEval.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/ExprEval.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CAction.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CAction.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CActionList.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CActionList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CAvi.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CAvi.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CButton.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CButton.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CButtonControl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CButtonControl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCheckBox.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCheckBox.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCheckButton.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCheckButton.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCommonDialog.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CCommonDialog.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CControl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CControl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CControlList.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CControlList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CEdit.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CEdit.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CEditControl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CEditControl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CForm.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CForm.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CHScrollBar.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CHScrollBar.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CImage.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CImage.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CLabel.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CLabel.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CListBox.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CListBox.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CMove.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CMove.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CObject.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CObject.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CPanel.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CPanel.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSButton.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSButton.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSFormDialog.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSFormDialog.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSLinkMenu.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSLinkMenu.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSMenu.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSMenu.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScreen.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScreen.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScrollBar.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScrollBar.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScrollWinControl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CScrollWinControl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSensitiveScroll.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CSensitiveScroll.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CTab.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CTab.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CTrackBar.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CTrackBar.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CVScrollBar.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CVScrollBar.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CWinControl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CWinControl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CWinScroll.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_CWinScroll.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_Cursor.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_Cursor.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_GuiCallbacks.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_GuiDef.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Gui/PP_GuiDef.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/KList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/KListIterators.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZBase.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZBase.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZCallback.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZCallback.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZDate.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZDate.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZExcept.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZExcept.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZFile.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZFile.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZPlatfrm.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZPlatfrm.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZProcess.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZProcess.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZPtrlist.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZPtrlist.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZRegular.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZRegular.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZResrce.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZResrce.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZString.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZString.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZStrlist.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZTrace.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Base/ZTrace.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Block.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Compile.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Function.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Input.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Instruct.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Internal.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Interprt.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Library.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Parametr.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Utility.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/Variable.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/ZCsl.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/ZCsl.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/ZCsl.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/Csl/ZCss.hpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZFileLib.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZFileLib.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZLibrary.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZLibrary.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZMathLib.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZMathLib.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZPixelLib.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZPixelLib.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZStringLib.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZStringLib.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/NativeLib/ZcStrLib.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/RegEx/ZRegEx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/MiniCsl/RegEx/ZRegEx.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDistributionPos.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDistributionPos.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDistributionVector.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDistributionVector.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDomain.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotDomain.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotTrajectory.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/MotTrajectory.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/Particle.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/Particle.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleAction.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleAction.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleBase.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleBase.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleCarrier.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleCarrier.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleDistribution.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleDistribution.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleEmitter.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleEmmiter.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleGroup.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ParticleGroup.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Mot/ps.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_Counter.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_Counter.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_Stdlib.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_Stdlib.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_String.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_String.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_StringList.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_StringList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_TimeDate.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_TimeDate.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/PP_basetypes.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/Platform.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/StringManager/StringManager.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/StringManager/StringManager.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Font.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Font.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Graphic.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Graphic.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Input.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Input.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_KeyConvertor.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_KeyConvertor.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Keyboard.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Keyboard.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Sound.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Sound.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Sprite.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Sprite.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_SpriteList.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_SpriteList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Surface.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Surface.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_SurfaceList.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_SurfaceList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Timer.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/Allegro/PP_Timer.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/HelpersWin32.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Font.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Font.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Graphic.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Graphic.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Input.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Input.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_KeyConvertor.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_KeyConvertor.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Keyboard.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Keyboard.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Sound.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Sound.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Sprite.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Sprite.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_SpriteList.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_SpriteList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_SurfaceList.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_SurfaceList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Timer.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/PP_Timer.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/prims16.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/DirectX/prims16.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Font.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Font.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_FontCache.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_FontCache.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Graphic.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Graphic.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Input.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Input.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_KeyConvertor.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_KeyConvertor.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Keyboard.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Keyboard.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Sound.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Sound.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Sprite.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Sprite.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_SpriteList.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_SpriteList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Surface.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Surface.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_SurfaceList.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_SurfaceList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Texture.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Texture.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Timer.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Timer.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Window.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/PP_Window.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/prims16.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/System/SDL/prims16.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/HeightMap.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/HeightMap.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/Parameters.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/Parameters.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenAlgorithm.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenAlgorithm.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenFaultAlg.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenFaultAlg.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenFluidAlg.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenFluidAlg.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenHillAlg.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenHillAlg.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenScriptAlg.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/TerrainGen/TGenScriptAlg.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basepath.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basepath.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basic2d.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basic2d.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basic3d.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/basic3d.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/colors16.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/colors16.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/config.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/config.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/logmethod.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/logmethod.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Curve2D.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Curve2D.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Curve2DFactory.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Curve2DFactory.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveComposite.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveComposite.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveElipsoid.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveElipsoid.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveFactory.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveFactory.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveLinear.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveLinear.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurvePolynome.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurvePolynome.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveScript.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/CurveScript.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Interval.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Interval.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/MathConstants.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/MathConstants.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/TemplateParamList.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/Trajectory.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/TrajectoryPolyline.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/TrajectoryPolyline.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/math/fixed.h" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/vfs/PP_VfsSystem.cpp" />
+		<Unit filename="../../../lib/gametoolkit/src/cpp/Common/vfs/PP_VfsSystem.h" />
+		<Unit filename="../../../src/Common/PPIG_Cfg.cpp" />
+		<Unit filename="../../../src/Common/PPIG_Cfg.h" />
+		<Unit filename="../../../src/Common/PPIG_Exit.cpp" />
+		<Unit filename="../../../src/Common/PPIG_Exit.h" />
+		<Unit filename="../../../src/Common/PP_Defines.cpp" />
+		<Unit filename="../../../src/Common/PP_Defines.h" />
+		<Unit filename="../../../src/Common/Paths.cpp" />
+		<Unit filename="../../../src/Common/Paths.h" />
+		<Unit filename="../../../src/Engine/EngineConfig.cpp" />
+		<Unit filename="../../../src/Engine/EngineConfig.h" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CAircraftInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CBaseSaveGameDialog.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CBaseSaveGameDialog.h" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CBattleControl.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CDropshipInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CFactoryInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CGroupInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CInfantryInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CLoadGameDialog.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CLoadGameDialog.h" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CMessage.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CRadar.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CSaveGameDialog.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CSaveGameDialog.h" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CScreen.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CTranInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CUnitInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_CVehicleInfo.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_Cursor.cpp" />
+		<Unit filename="../../../src/Engine/Interface/PPIG_InterfaceDef.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_BGManager.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_BattleGroup.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_Doctrine.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_EngineDef.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_Map.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_Mission.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_MissionControl.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_MissionDiskOp.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_MissionDiskOp.h" />
+		<Unit filename="../../../src/Engine/PPIG_ObjAircraft.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjArtillery.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjBallistic.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjBase.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjBoids.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjBullet.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjChopper.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjDamage.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjDropship.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjEffect.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjEvent.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjEventManager.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjFactory.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjFighter.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjInfantry.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjLaser.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjList.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjPlasma.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjReal.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjRecon.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjRocket.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjStatic.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjStimul.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjTank.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjTile.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjTran.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjUnit.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjVehicle.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_ObjectCreator.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_PathAlg.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_PathServer.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_SerObjList.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_SpaceSound.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_TacticalComputer.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_TransportRules.cpp" />
+		<Unit filename="../../../src/Engine/PPIG_TransportRules.h" />
+		<Unit filename="../../../src/Engine/PPIG_WeaponRules.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysAction.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysActionList.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysAirPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysArtilleryTurret.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysBase.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysBayManager.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysBlPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysBody.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysBuilder.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysCPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysChopperWeapons.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysDPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysDropshipPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysFPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysFighterWeapons.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysLPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysOscilator.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysRPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysSensors.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysTactics.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysTactics.h" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysTurret.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysTurretAction.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysVPropulsion.cpp" />
+		<Unit filename="../../../src/Engine/SubSys/PPIG_SubSysVisual.cpp" />
+		<Unit filename="../../../src/Engine/Universe/AIUnits.cpp" />
+		<Unit filename="../../../src/Engine/Universe/AIUnits.h" />
+		<Unit filename="../../../src/Engine/Universe/Comportament.cpp" />
+		<Unit filename="../../../src/Engine/Universe/Comportament.h" />
+		<Unit filename="../../../src/Engine/Universe/Equipment.cpp" />
+		<Unit filename="../../../src/Engine/Universe/Equipment.h" />
+		<Unit filename="../../../src/Engine/Universe/PPU_Resources.cpp" />
+		<Unit filename="../../../src/Engine/Universe/PPU_Resources.h" />
+		<Unit filename="../../../src/Engine/Universe/PlayerProfile.cpp" />
+		<Unit filename="../../../src/Engine/Universe/PlayerProfile.h" />
+		<Unit filename="../../../src/Engine/Universe/Soldier.cpp" />
+		<Unit filename="../../../src/Engine/Universe/Soldier.h" />
+		<Unit filename="../../../src/Engine/Universe/Statics.cpp" />
+		<Unit filename="../../../src/Engine/Universe/Statics.h" />
+		<Unit filename="../../../src/Engine/Universe/Tile.cpp" />
+		<Unit filename="../../../src/Engine/Universe/Tile.h" />
+		<Unit filename="../../../src/Engine/Universe/VehicleX.cpp" />
+		<Unit filename="../../../src/Engine/Universe/VehicleX.h" />
+		<Unit filename="../../../src/Engine/WeaponRulesLib.cpp" />
+		<Unit filename="PPEngine.cpp" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Extensions>
+			<editor_config active="1" use_tabs="0" tab_indents="1" tab_width="4" indent="4" eol_mode="0" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
