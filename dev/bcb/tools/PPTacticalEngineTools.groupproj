@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EBA7B0F3-EB62-4330-A604-9B038F288029}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MapChunkEd\MapChunkEd.cbproj">
+            <Dependencies>..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PironGamesComponents">
+        <MSBuild Projects="..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj"/>
+    </Target>
+    <Target Name="PironGamesComponents:Clean">
+        <MSBuild Projects="..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PironGamesComponents:Make">
+        <MSBuild Projects="..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MapChunkEd" DependsOnTargets="PironGamesComponents">
+        <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj"/>
+    </Target>
+    <Target Name="MapChunkEd:Clean" DependsOnTargets="PironGamesComponents:Clean">
+        <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MapChunkEd:Make" DependsOnTargets="PironGamesComponents:Make">
+        <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PironGamesComponents;MapChunkEd"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

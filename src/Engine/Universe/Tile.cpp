@@ -159,7 +159,7 @@ bool CAuxMapChunk::AddToLayer(int _x, int _y, CAuxTileData* _baseTile)
       return true;
 
     case MTT_SHORE:
-      if (lList->Count() == 1 && lList->Get(0)->GetType() == MTT_WATER || lList->Count() == 0)
+      if ((lList->Count() == 1 && lList->Get(0)->GetType() == MTT_WATER) || lList->Count() == 0)
       {
         lList->Add(_baseTile);
         return true;
@@ -167,10 +167,8 @@ bool CAuxMapChunk::AddToLayer(int _x, int _y, CAuxTileData* _baseTile)
       break;
 
     case MTT_WATER:
-      if (lList->Count() == 1)
+      if (lList->Count() == 1 && lList->Get(0)->GetType() == MTT_SHORE)
       {
-        if (lList->Get(0)->GetType() == MTT_SHORE)
-        {
           CAuxTileData* lTemp = lList->Get(0);
 
           lList->Remove(0);
@@ -178,7 +176,6 @@ bool CAuxMapChunk::AddToLayer(int _x, int _y, CAuxTileData* _baseTile)
           lList->Add(_baseTile);
           lList->Add(lTemp);
           return true;
-        }
       }
       else
       {
@@ -186,6 +183,9 @@ bool CAuxMapChunk::AddToLayer(int _x, int _y, CAuxTileData* _baseTile)
         while(lList->Count() > 0) lList->Delete(0);
         lList->Add(_baseTile);
       }
+      break;
+
+    case MTT_UNKNOWN:
       break;
   }
 
@@ -286,7 +286,7 @@ int CAuxMapChunk::GetDepth(int _x, int _y)
 
 bool CAuxMapChunk::CheckLimits(int _x, int _y)
 {
-  return ((_x < mSize) && (_x > 1) && (_y > 1) || (_y < mSize));
+  return ((_x < mSize) && (_x >= 0) && (_y >= 0) && (_y < mSize));
 }
 //---------------------------------------------------------------------------
 
