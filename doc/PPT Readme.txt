@@ -72,7 +72,7 @@ To compile the tools, then:
   components into "PPTactical" pallete of C++Builder (script popup, open image dialog,
   extended image and http label)
 · now open each of the tools project file into C++Builder (meditor.bpr, 
-  soulless.bpr, unitsed.bpr, tileed.bpr, spred.bpr)
+  BuildingEd.bpr, unitsed.bpr, tileed.bpr, spred.bpr)
 · perform the same path modifications you made to compile the engine
 · by now, you should have all the tools executables in $(INSTALL_DIR)/bin
 

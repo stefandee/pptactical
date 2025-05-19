@@ -7,6 +7,9 @@
             <Dependencies/>
         </Projects>
         <Projects Include="MapChunkEd\MapChunkEd.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BuildingEd\BuildingEd.cbproj">
             <Dependencies>..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj</Dependencies>
         </Projects>
     </ItemGroup>
@@ -26,23 +29,32 @@
     <Target Name="PironGamesComponents:Make">
         <MSBuild Projects="..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="MapChunkEd" DependsOnTargets="PironGamesComponents">
+    <Target Name="MapChunkEd">
         <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj"/>
     </Target>
-    <Target Name="MapChunkEd:Clean" DependsOnTargets="PironGamesComponents:Clean">
+    <Target Name="MapChunkEd:Clean">
         <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="MapChunkEd:Make" DependsOnTargets="PironGamesComponents:Make">
+    <Target Name="MapChunkEd:Make">
         <MSBuild Projects="MapChunkEd\MapChunkEd.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="BuildingEd" DependsOnTargets="PironGamesComponents">
+        <MSBuild Projects="BuildingEd\BuildingEd.cbproj"/>
+    </Target>
+    <Target Name="BuildingEd:Clean" DependsOnTargets="PironGamesComponents:Clean">
+        <MSBuild Projects="BuildingEd\BuildingEd.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BuildingEd:Make" DependsOnTargets="PironGamesComponents:Make">
+        <MSBuild Projects="BuildingEd\BuildingEd.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PironGamesComponents;MapChunkEd"/>
+        <CallTarget Targets="PironGamesComponents;MapChunkEd;BuildingEd"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean"/>
+        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean;BuildingEd:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make"/>
+        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make;BuildingEd:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -23,15 +23,14 @@
 #pragma hdrstop
 #include <tchar.h>
 
-#include <Vcl.Imaging.pngimage.hpp>
-
 #include "easylogging++.h"
 INITIALIZE_EASYLOGGINGPP
-
 //---------------------------------------------------------------------------
+
 USEFORM("..\..\..\..\src\Tools\MapChunkEd\FMapChunk.cpp", FormMain);
 USEFORM("..\..\..\..\src\Tools\MapChunkEd\FAbout.cpp", FormAbout);
 //---------------------------------------------------------------------------
+
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
     try
