@@ -69,7 +69,7 @@ typedef struct _InfantryUnified
    char name[16];
    char surname[16];
    char description[192];
-   int  gender;               //0-male, 1-female
+   int  gender;            //0-male, 1-female, define other values as necessary for your game
    int  type;              //0-special, 1-ordinary
    char kind[15];          //pentru ordinary un fel de descriere
    int  morale;

@@ -12,6 +12,9 @@
         <Projects Include="BuildingEd\BuildingEd.cbproj">
             <Dependencies>..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj</Dependencies>
         </Projects>
+        <Projects Include="UnitsEd\UnitsEd.cbproj">
+            <Dependencies>..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj</Dependencies>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="BuildingEd:Make" DependsOnTargets="PironGamesComponents:Make">
         <MSBuild Projects="BuildingEd\BuildingEd.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="UnitsEd" DependsOnTargets="PironGamesComponents">
+        <MSBuild Projects="UnitsEd\UnitsEd.cbproj"/>
+    </Target>
+    <Target Name="UnitsEd:Clean" DependsOnTargets="PironGamesComponents:Clean">
+        <MSBuild Projects="UnitsEd\UnitsEd.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UnitsEd:Make" DependsOnTargets="PironGamesComponents:Make">
+        <MSBuild Projects="UnitsEd\UnitsEd.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PironGamesComponents;MapChunkEd;BuildingEd"/>
+        <CallTarget Targets="PironGamesComponents;MapChunkEd;BuildingEd;UnitsEd"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean;BuildingEd:Clean"/>
+        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean;BuildingEd:Clean;UnitsEd:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make;BuildingEd:Make"/>
+        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make;BuildingEd:Make;UnitsEd:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

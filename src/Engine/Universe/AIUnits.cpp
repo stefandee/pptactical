@@ -49,7 +49,6 @@
 
 #include "config.h"
 #include "AIUnits.h"
-#include "easylogging++.h"
 #include "Serializable.h"
 
 void TUnitObservationPoint::Serialize(PP::Stream& _a)
