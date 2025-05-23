@@ -75,5 +75,7 @@ lib/**/
 # User Data
 bin/*.txt
 bin/*.pCfg
-bin/*.cfg
+bin/PPMEDesktop.cfg
 bin/out/**
+bin/*.ini
+bin/*.log
