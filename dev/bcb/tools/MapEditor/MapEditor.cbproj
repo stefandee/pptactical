@@ -1,0 +1,2425 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7264AEF5-A39F-4BBC-8F80-AEB0CFD925B4}</ProjectGuid>
+        <ProjectVersion>19.5</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <AppType>Application</AppType>
+        <MainSource>MapEditor.cpp</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <CC_Suffix Condition="'$(CC_Suffix)'==''">c</CC_Suffix>
+        <TargetedPlatforms>1</TargetedPlatforms>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+        <DynamicRTL>true</DynamicRTL>
+        <UsePackages>true</UsePackages>
+        <IntermediateOutputDir>..\..\..\..\tmp\MapEditor\$(Platform)\$(Config)</IntermediateOutputDir>
+        <FinalOutputDir>..\..\..\..\tmp\MapEditor\$(Platform)\$(Config)</FinalOutputDir>
+        <BCC_wpar>false</BCC_wpar>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+        <ProjectType>CppVCLApplication</ProjectType>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <AllPackageLibs>rtl.lib;vcl.lib;PironGamesComponents.lib;bcbsmp.lib;vclx.lib;vclimg.lib</AllPackageLibs>
+        <_TCHARMapping>wchar_t</_TCHARMapping>
+        <Multithreaded>true</Multithreaded>
+        <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+        <IncludePath>..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\platform\;..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\archivers\;..\..\..\..\src\Common\;..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\;..\..\..\..\lib\gametoolkit\lib\pngdib\;..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\;..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\RegEx\;..\..\..\..\src\Engine\Interface\;..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\;..\..\..\..\lib\gametoolkit\src\cpp\Common\vfs\;..\..\..\..\lib\gametoolkit\src\cpp\Common\math\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\;..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\;..\..\..\..\lib\gametoolkit\lib\tinyxml2\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\;..\..\..\..\src\Engine\SubSys\;..\..\..\..\lib\gametoolkit\src\cpp\Common\System\SDL\;..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1\;..\..\..\..\src\Tools\MapEditor\ecosysconfig\;..\..\..\..\src\Tools\MapEditor\;..\..\..\..\src\Tools\MapEditor\;.\;..\..\..\..\lib\gametoolkit\src\cpp\Common;..\..\..\..\lib\gametoolkit\src\cpp\Components;..\..\..\..\src\Common;$(BDSINCLUDE)\windows\vcl;..\..\..\..\src\Engine\;..\..\..\..\lib\gametoolkit\src\cpp\Components\;..\..\..\..\lib\gametoolkit\src\cpp\Common\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\;..\..\..\..\src\Engine\Universe\;..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\platform\;..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\archivers\;..\..\..\..\src\Common\;..\..\..\..\src\Engine\Universe\;..\..\..\..\src\Engine\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\;..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\;..\..\..\..\lib\gametoolkit\lib\pngdib\;..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\;..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\RegEx\;..\..\..\..\src\Engine\Interface\;..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\;..\..\..\..\lib\gametoolkit\src\cpp\Common\vfs\;..\..\..\..\lib\gametoolkit\src\cpp\Common\math\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\;..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\;..\..\..\..\lib\gametoolkit\src\cpp\Common\;..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\;..\..\..\..\lib\gametoolkit\lib\tinyxml2\;..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\;..\..\..\..\src\Engine\SubSys\;..\..\..\..\lib\gametoolkit\src\cpp\Common\System\SDL\;..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1\;..\..\..\..\src\Tools\MapEditor\ecosysconfig\;..\..\..\..\src\Tools\MapEditor\;.\;..\..\..\..\lib\gametoolkit\lib\bcb6;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <SanitizedProjectName>MapEditor</SanitizedProjectName>
+        <VerInfo_Locale>2057</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;PironGames;PironGamesComponents;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <BCC_PCHName_Clang>MapEditorPCH1.h</BCC_PCHName_Clang>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <Debugger_CWD>..\..\..\..\bin\</Debugger_CWD>
+        <BCC_Defines>PNGDIB_V2COMPATIBLE;$(BCC_Defines)</BCC_Defines>
+        <BCC_IncludePath>..\..\..\..\lib\gametoolkit\src\cpp\include\pnglib;..\..\..\..\lib\gametoolkit\src\cpp\include\zlib;$(BCC_IncludePath)</BCC_IncludePath>
+        <ILINK_LibraryPath>C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\;..\..\..\..\\lib\gametoolkit\lib\bcb6\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
+        <BCC_PCHName_Clang>MapEditorPCH1.h</BCC_PCHName_Clang>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <Defines>_DEBUG;$(Defines)</Defines>
+        <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+        <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+        <DCC_Define>DEBUG</DCC_Define>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+        <BCC_StackFrames>true</BCC_StackFrames>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <TASM_Debugging>Full</TASM_Debugging>
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+        <BCC_EnableCPPExceptions>true</BCC_EnableCPPExceptions>
+        <BCC_DisableFramePtrElimOpt>true</BCC_DisableFramePtrElimOpt>
+        <BCC_DisableSpellChecking>true</BCC_DisableSpellChecking>
+        <CLANG_UnwindTables>true</CLANG_UnwindTables>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;PironGamesComponents.bpi;bcbsmp.bpi;vclx.bpi;vclimg.bpi</LinkPackageImports>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <Defines>NDEBUG;$(Defines)</Defines>
+        <TASM_Debugging>None</TASM_Debugging>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+    </PropertyGroup>
+    <ItemGroup>
+        <LibFiles Include="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\ddraw.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>310</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\dinput.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>311</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\dsound.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>312</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <CppCompile Include="MapEditor.cpp">
+            <BuildOrder>0</BuildOrder>
+        </CppCompile>
+        <PCHCompile Include="MapEditorPCH1.h">
+            <BuildOrder>1</BuildOrder>
+            <PCH>true</PCH>
+        </PCHCompile>
+        <LibFiles Include="..\..\..\..\lib\gametoolkit\lib\bcb6\libpng.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>308</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <LibFiles Include="..\..\..\..\lib\gametoolkit\lib\bcb6\zlib.lib" Condition="'$(Platform)'=='Win32'">
+            <BuildOrder>315</BuildOrder>
+            <IgnorePath>true</IgnorePath>
+        </LibFiles>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1\easylogging++.cc">
+            <BuildOrder>64</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1\easylogging++.h">
+            <BuildOrder>65</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\archivers\dir.c">
+            <BuildOrder>304</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs.c">
+            <BuildOrder>312</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs.h">
+            <BuildOrder>311</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs_byteorder.c">
+            <BuildOrder>312</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs_casefolding.h">
+            <BuildOrder>313</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs_internal.h">
+            <BuildOrder>314</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs_platforms.h">
+            <BuildOrder>314</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\physfs_unicode.c">
+            <BuildOrder>315</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\physfs-2.0.3\platform\windows.c">
+            <BuildOrder>305</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\lib\tinyxml2\tinyxml2.cpp">
+            <BuildOrder>118</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\lib\tinyxml2\tinyxml2.h">
+            <BuildOrder>119</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Serializable.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Serializable.h</DependentOn>
+            <BuildOrder>175</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream.cpp">
+            <BuildOrder>176</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream.h">
+            <BuildOrder>177</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream_ANSI_C.cpp">
+            <BuildOrder>178</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream_ANSI_C.h">
+            <BuildOrder>179</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream_PhysFS.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\Stream_PhysFS.h</DependentOn>
+            <BuildOrder>180</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\XmlSerializable.cpp">
+            <BuildOrder>282</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Archive\XmlSerializable.h">
+            <BuildOrder>283</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\basepath.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\basepath.h</DependentOn>
+            <BuildOrder>142</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\basic2d.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\basic2d.h</DependentOn>
+            <BuildOrder>239</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\basic3d.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\basic3d.h</DependentOn>
+            <BuildOrder>243</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\BitOp.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\BitOp.h</DependentOn>
+            <BuildOrder>237</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\Cfg.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\Cfg.h</DependentOn>
+            <BuildOrder>148</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\CfgTxt.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Cfg\CfgTxt.h</DependentOn>
+            <BuildOrder>149</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGen.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGen.h</DependentOn>
+            <BuildOrder>152</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGenKernel.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGenKernel.h</DependentOn>
+            <BuildOrder>153</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGenRandom.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysGenRandom.h</DependentOn>
+            <BuildOrder>154</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysItem.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\EcoSysGen\EcoSysItem.h</DependentOn>
+            <BuildOrder>155</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GBmpLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GBmpLoad.h</DependentOn>
+            <BuildOrder>158</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GJpgLoad.cpp">
+            <Exclude>True</Exclude>
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GJpgLoad.h</DependentOn>
+            <BuildOrder>159</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GLoad.h</DependentOn>
+            <BuildOrder>160</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GPcxLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GPcxLoad.h</DependentOn>
+            <BuildOrder>161</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\GPngLoad.cpp">
+            <BuildOrder>162</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\pngdib.cpp">
+            <BuildOrder>169</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\GLoad\pngdib.h">
+            <BuildOrder>170</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CAction.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CAction.h</DependentOn>
+            <BuildOrder>257</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CActionList.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CActionList.h</DependentOn>
+            <BuildOrder>258</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CButton.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CButton.h</DependentOn>
+            <BuildOrder>260</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CButtonControl.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CButtonControl.h</DependentOn>
+            <BuildOrder>260</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCheckBox.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCheckBox.h</DependentOn>
+            <BuildOrder>261</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCheckButton.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCheckButton.h</DependentOn>
+            <BuildOrder>262</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCommonDialog.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CCommonDialog.h</DependentOn>
+            <BuildOrder>262</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CControl.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CControl.h</DependentOn>
+            <BuildOrder>263</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CControlList.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CControlList.h</DependentOn>
+            <BuildOrder>264</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CEdit.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CEdit.h</DependentOn>
+            <BuildOrder>265</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CEditControl.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CEditControl.h</DependentOn>
+            <BuildOrder>266</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CForm.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CForm.h</DependentOn>
+            <BuildOrder>267</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CHScrollBar.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CHScrollBar.h</DependentOn>
+            <BuildOrder>268</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CImage.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CImage.h</DependentOn>
+            <BuildOrder>269</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CLabel.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CLabel.h</DependentOn>
+            <BuildOrder>270</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CListBox.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CListBox.h</DependentOn>
+            <BuildOrder>271</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CMove.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CMove.h</DependentOn>
+            <BuildOrder>270</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CObject.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CObject.h</DependentOn>
+            <BuildOrder>271</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CPanel.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CPanel.h</DependentOn>
+            <BuildOrder>272</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSButton.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSButton.h</DependentOn>
+            <BuildOrder>272</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScreen.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScreen.h</DependentOn>
+            <BuildOrder>273</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScrollBar.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScrollBar.h</DependentOn>
+            <BuildOrder>274</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScrollWinControl.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CScrollWinControl.h</DependentOn>
+            <BuildOrder>274</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSensitiveScroll.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSensitiveScroll.h</DependentOn>
+            <BuildOrder>275</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSFormDialog.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSFormDialog.h</DependentOn>
+            <BuildOrder>276</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSLinkMenu.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSLinkMenu.h</DependentOn>
+            <BuildOrder>277</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSMenu.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CSMenu.h</DependentOn>
+            <BuildOrder>278</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CTab.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CTab.h</DependentOn>
+            <BuildOrder>278</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CTrackBar.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CTrackBar.h</DependentOn>
+            <BuildOrder>279</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_Cursor.cpp">
+            <BuildOrder>280</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CVScrollBar.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CVScrollBar.h</DependentOn>
+            <BuildOrder>280</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CWinControl.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CWinControl.h</DependentOn>
+            <BuildOrder>281</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CWinScroll.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_CWinScroll.h</DependentOn>
+            <BuildOrder>281</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_GuiDef.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\Gui\PP_GuiDef.h</DependentOn>
+            <BuildOrder>282</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\Curve2D.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\Curve2D.h</DependentOn>
+            <BuildOrder>150</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveComposite.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveComposite.h</DependentOn>
+            <BuildOrder>181</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveElipsoid.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveElipsoid.h</DependentOn>
+            <BuildOrder>182</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveLinear.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveLinear.h</DependentOn>
+            <BuildOrder>183</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurvePolynome.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurvePolynome.h</DependentOn>
+            <BuildOrder>184</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveScript.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\CurveScript.h</DependentOn>
+            <BuildOrder>185</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\math\Interval.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\math\Interval.h</DependentOn>
+            <BuildOrder>186</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZBase.h">
+            <BuildOrder>93</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZBase.hpp">
+            <BuildOrder>94</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZCallback.cpp">
+            <BuildOrder>95</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZCallback.h">
+            <BuildOrder>96</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZDate.cpp">
+            <BuildOrder>97</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZDate.hpp">
+            <BuildOrder>98</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZExcept.cpp">
+            <BuildOrder>99</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZExcept.hpp">
+            <BuildOrder>100</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZFile.cpp">
+            <BuildOrder>101</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZFile.hpp">
+            <BuildOrder>102</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZPlatfrm.cpp">
+            <BuildOrder>103</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZPlatfrm.hpp">
+            <BuildOrder>104</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZProcess.cpp">
+            <BuildOrder>105</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZProcess.hpp">
+            <BuildOrder>106</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZPtrlist.cpp">
+            <BuildOrder>107</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZPtrlist.hpp">
+            <BuildOrder>108</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZRegular.cpp">
+            <BuildOrder>109</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZRegular.hpp">
+            <BuildOrder>110</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZResrce.cpp">
+            <BuildOrder>111</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZResrce.hpp">
+            <BuildOrder>112</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZString.cpp">
+            <BuildOrder>113</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZString.hpp">
+            <BuildOrder>114</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZStrlist.hpp">
+            <BuildOrder>115</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZTrace.cpp">
+            <BuildOrder>116</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Base\ZTrace.hpp">
+            <BuildOrder>117</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Block.cpp">
+            <BuildOrder>120</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Compile.cpp">
+            <BuildOrder>121</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Function.cpp">
+            <BuildOrder>122</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Input.cpp">
+            <BuildOrder>123</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Instruct.cpp">
+            <BuildOrder>124</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Internal.h">
+            <BuildOrder>125</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Interprt.cpp">
+            <BuildOrder>126</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Library.cpp">
+            <BuildOrder>127</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Parametr.cpp">
+            <BuildOrder>128</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Utility.cpp">
+            <BuildOrder>129</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\Variable.cpp">
+            <BuildOrder>130</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\ZCsl.cpp">
+            <BuildOrder>131</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\ZCsl.h">
+            <BuildOrder>132</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\ZCsl.hpp">
+            <BuildOrder>133</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\Csl\ZCss.hpp">
+            <BuildOrder>134</BuildOrder>
+        </None>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZcStrLib.cpp">
+            <Exclude>True</Exclude>
+            <BuildOrder>135</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZFileLib.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZFileLib.h</DependentOn>
+            <BuildOrder>136</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZLibrary.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZLibrary.h</DependentOn>
+            <BuildOrder>137</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZMathLib.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZMathLib.h</DependentOn>
+            <BuildOrder>138</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZPixelLib.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZPixelLib.h</DependentOn>
+            <BuildOrder>139</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZStringLib.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\NativeLib\ZStringLib.h</DependentOn>
+            <BuildOrder>140</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\RegEx\ZRegEx.c">
+            <BuildOrder>154</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\MiniCsl\RegEx\ZRegEx.h">
+            <BuildOrder>155</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_Counter.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_Counter.h</DependentOn>
+            <BuildOrder>238</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_Stdlib.cpp">
+            <BuildOrder>156</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_Stdlib.h">
+            <BuildOrder>157</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_String.cpp">
+            <BuildOrder>173</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\PP_String.h">
+            <BuildOrder>174</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SAuLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SAuLoad.h</DependentOn>
+            <BuildOrder>164</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SLoad.h</DependentOn>
+            <BuildOrder>165</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SPSndLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SPSndLoad.h</DependentOn>
+            <BuildOrder>166</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SVocLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SVocLoad.h</DependentOn>
+            <BuildOrder>167</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SWavLoad.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\SLoad\SWavLoad.h</DependentOn>
+            <BuildOrder>168</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\colors16.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\colors16.h</DependentOn>
+            <BuildOrder>163</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Font.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Font.h</DependentOn>
+            <BuildOrder>141</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Graphic.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Graphic.h</DependentOn>
+            <BuildOrder>142</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Input.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Input.h</DependentOn>
+            <BuildOrder>303</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Keyboard.cpp">
+            <BuildOrder>290</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Keyboard.h">
+            <BuildOrder>291</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_KeyConvertor.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_KeyConvertor.h</DependentOn>
+            <BuildOrder>292</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Sound.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Sound.h</DependentOn>
+            <BuildOrder>143</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Sprite.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Sprite.h</DependentOn>
+            <BuildOrder>144</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_SpriteList.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_SpriteList.h</DependentOn>
+            <BuildOrder>145</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_SurfaceList.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_SurfaceList.h</DependentOn>
+            <BuildOrder>146</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Timer.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\PP_Timer.h</DependentOn>
+            <BuildOrder>242</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\prims16.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\System\DirectX\prims16.h</DependentOn>
+            <BuildOrder>147</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\lib\gametoolkit\src\cpp\Common\vfs\PP_VfsSystem.cpp">
+            <DependentOn>..\..\..\..\lib\gametoolkit\src\cpp\Common\vfs\PP_VfsSystem.h</DependentOn>
+            <BuildOrder>151</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Common\PPIG_Exit.cpp">
+            <DependentOn>..\..\..\..\src\Common\PPIG_Exit.h</DependentOn>
+            <BuildOrder>284</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\EngineConfig.cpp">
+            <BuildOrder>187</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Engine\EngineConfig.h">
+            <BuildOrder>188</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CAircraftInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CAircraftInfo.h</DependentOn>
+            <BuildOrder>296</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CBaseSaveGameDialog.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CBaseSaveGameDialog.h</DependentOn>
+            <BuildOrder>252</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CBattleControl.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CBattleControl.h</DependentOn>
+            <BuildOrder>244</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CDropshipInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CDropshipInfo.h</DependentOn>
+            <BuildOrder>297</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CFactoryInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CFactoryInfo.h</DependentOn>
+            <BuildOrder>298</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CGroupInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CGroupInfo.h</DependentOn>
+            <BuildOrder>299</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CInfantryInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CInfantryInfo.h</DependentOn>
+            <BuildOrder>299</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CLoadGameDialog.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CLoadGameDialog.h</DependentOn>
+            <BuildOrder>293</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CMessage.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CMessage.h</DependentOn>
+            <BuildOrder>253</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CRadar.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CRadar.h</DependentOn>
+            <BuildOrder>245</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CSaveGameDialog.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CSaveGameDialog.h</DependentOn>
+            <BuildOrder>254</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CScreen.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CScreen.h</DependentOn>
+            <BuildOrder>153</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CTranInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CTranInfo.h</DependentOn>
+            <BuildOrder>302</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CUnitInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CUnitInfo.h</DependentOn>
+            <BuildOrder>300</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_CVehicleInfo.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_CVehicleInfo.h</DependentOn>
+            <BuildOrder>301</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Interface\PPIG_InterfaceDef.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Interface\PPIG_InterfaceDef.h</DependentOn>
+            <BuildOrder>295</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_BattleGroup.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_BattleGroup.h</DependentOn>
+            <BuildOrder>189</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_BGManager.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_BGManager.h</DependentOn>
+            <BuildOrder>190</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_Doctrine.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_Doctrine.h</DependentOn>
+            <BuildOrder>191</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_EngineDef.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_EngineDef.h</DependentOn>
+            <BuildOrder>192</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_Map.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_Map.h</DependentOn>
+            <BuildOrder>193</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_MapData.cpp">
+            <BuildOrder>194</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Engine\PPIG_MapData.h">
+            <BuildOrder>195</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_Mission.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_Mission.h</DependentOn>
+            <BuildOrder>196</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_MissionControl.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_MissionControl.h</DependentOn>
+            <BuildOrder>197</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_MissionDiskOp.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_MissionDiskOp.h</DependentOn>
+            <BuildOrder>198</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjAircraft.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjAircraft.h</DependentOn>
+            <BuildOrder>199</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjArtillery.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjArtillery.h</DependentOn>
+            <BuildOrder>200</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjBallistic.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjBallistic.h</DependentOn>
+            <BuildOrder>201</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjBase.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjBase.h</DependentOn>
+            <BuildOrder>202</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjBoids.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjBoids.h</DependentOn>
+            <BuildOrder>203</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjBullet.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjBullet.h</DependentOn>
+            <BuildOrder>204</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjChopper.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjChopper.h</DependentOn>
+            <BuildOrder>205</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjDamage.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjDamage.h</DependentOn>
+            <BuildOrder>206</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjDropship.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjDropship.h</DependentOn>
+            <BuildOrder>207</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjectCreator.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjectCreator.h</DependentOn>
+            <BuildOrder>208</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjEffect.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjEffect.h</DependentOn>
+            <BuildOrder>209</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjEvent.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjEvent.h</DependentOn>
+            <BuildOrder>210</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjEventManager.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjEventManager.h</DependentOn>
+            <BuildOrder>211</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjFactory.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjFactory.h</DependentOn>
+            <BuildOrder>212</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjFighter.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjFighter.h</DependentOn>
+            <BuildOrder>213</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjInfantry.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjInfantry.h</DependentOn>
+            <BuildOrder>214</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjLaser.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjLaser.h</DependentOn>
+            <BuildOrder>215</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjList.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjList.h</DependentOn>
+            <BuildOrder>216</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjPlasma.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjPlasma.h</DependentOn>
+            <BuildOrder>217</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjReal.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjReal.h</DependentOn>
+            <BuildOrder>218</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjRecon.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjRecon.h</DependentOn>
+            <BuildOrder>219</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjRocket.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjRocket.h</DependentOn>
+            <BuildOrder>220</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjStatic.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjStatic.h</DependentOn>
+            <BuildOrder>221</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjStimul.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjStimul.h</DependentOn>
+            <BuildOrder>222</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjTank.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjTank.h</DependentOn>
+            <BuildOrder>223</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjTile.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjTile.h</DependentOn>
+            <BuildOrder>224</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjTran.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjTran.h</DependentOn>
+            <BuildOrder>225</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjUnit.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjUnit.h</DependentOn>
+            <BuildOrder>226</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_ObjVehicle.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_ObjVehicle.h</DependentOn>
+            <BuildOrder>227</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_PathAlg.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_PathAlg.h</DependentOn>
+            <BuildOrder>228</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_PathServer.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_PathServer.h</DependentOn>
+            <BuildOrder>229</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_SerObjList.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_SerObjList.h</DependentOn>
+            <BuildOrder>230</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_SpaceSound.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_SpaceSound.h</DependentOn>
+            <BuildOrder>231</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_TacticalComputer.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_TacticalComputer.h</DependentOn>
+            <BuildOrder>232</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_TransportRules.cpp">
+            <BuildOrder>233</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Engine\PPIG_TransportRules.h">
+            <BuildOrder>234</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\src\Engine\PPIG_WeaponRules.cpp">
+            <DependentOn>..\..\..\..\src\Engine\PPIG_WeaponRules.h</DependentOn>
+            <BuildOrder>235</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysAction.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysAction.h</DependentOn>
+            <BuildOrder>68</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysActionList.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysActionList.h</DependentOn>
+            <BuildOrder>69</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysAirPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysAirPropulsion.h</DependentOn>
+            <BuildOrder>70</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysArtilleryTurret.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysArtilleryTurret.h</DependentOn>
+            <BuildOrder>71</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysBase.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysBase.h</DependentOn>
+            <BuildOrder>72</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysBayManager.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysBayManager.h</DependentOn>
+            <BuildOrder>73</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysBlPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysBlPropulsion.h</DependentOn>
+            <BuildOrder>74</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysBody.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysBody.h</DependentOn>
+            <BuildOrder>75</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysBuilder.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysBuilder.h</DependentOn>
+            <BuildOrder>76</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysChopperWeapons.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysChopperWeapons.h</DependentOn>
+            <BuildOrder>77</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysCPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysCPropulsion.h</DependentOn>
+            <BuildOrder>78</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysDPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysDPropulsion.h</DependentOn>
+            <BuildOrder>79</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysDropshipPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysDropshipPropulsion.h</DependentOn>
+            <BuildOrder>80</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysFighterWeapons.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysFighterWeapons.h</DependentOn>
+            <BuildOrder>81</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysFPropulsion.cpp">
+            <BuildOrder>82</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysLPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysLPropulsion.h</DependentOn>
+            <BuildOrder>83</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysOscilator.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysOscilator.h</DependentOn>
+            <BuildOrder>84</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysPropulsion.h</DependentOn>
+            <BuildOrder>85</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysRPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysRPropulsion.h</DependentOn>
+            <BuildOrder>86</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysSensors.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysSensors.h</DependentOn>
+            <BuildOrder>87</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysTactics.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysTactics.h</DependentOn>
+            <BuildOrder>88</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysTurret.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysTurret.h</DependentOn>
+            <BuildOrder>89</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysTurretAction.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysTurretAction.h</DependentOn>
+            <BuildOrder>90</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysVisual.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysVisual.h</DependentOn>
+            <BuildOrder>91</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\SubSys\PPIG_SubSysVPropulsion.cpp">
+            <DependentOn>..\..\..\..\src\Engine\SubSys\PPIG_SubSysVPropulsion.h</DependentOn>
+            <BuildOrder>92</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\AIUnits.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\AIUnits.h</DependentOn>
+            <BuildOrder>241</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\Equipment.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\Equipment.h</DependentOn>
+            <BuildOrder>289</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\PlayerProfile.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\PlayerProfile.h</DependentOn>
+            <BuildOrder>285</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\Soldier.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\Soldier.h</DependentOn>
+            <BuildOrder>286</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\Statics.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\Statics.h</DependentOn>
+            <BuildOrder>287</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\Tile.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\Tile.h</DependentOn>
+            <BuildOrder>240</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\Universe\VehicleX.cpp">
+            <DependentOn>..\..\..\..\src\Engine\Universe\VehicleX.h</DependentOn>
+            <BuildOrder>288</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Engine\WeaponRulesLib.cpp">
+            <DependentOn>..\..\..\..\src\Engine\WeaponRulesLib.h</DependentOn>
+            <BuildOrder>236</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\BayManagerObjects.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\BayManagerObjects.h</DependentOn>
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\CFileHistory.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\CFileHistory.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\DataM.cpp">
+            <Form>Datas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\DataM.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\DataM.dfm"/>
+        <None Include="..\..\..\..\src\Tools\MapEditor\DataM.dti"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenKernelConfig.cpp">
+            <Form>FormEcoSysGenKernelConfig</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenKernelConfig.h</DependentOn>
+            <BuildOrder>62</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenRandomConfig.cpp">
+            <Form>FormEcoSysGenRandomConfig</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenRandomConfig.h</DependentOn>
+            <BuildOrder>63</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FAbout.cpp">
+            <Form>FormAbout</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FAbout.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FAbout.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FAlt.cpp">
+            <Form>FormAltitude</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FAlt.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FAlt.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FBayManager.cpp">
+            <Form>FormBayManager</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FBayManager.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FBayManager.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FBGEdit.cpp">
+            <Form>FormBGEdit</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FBGEdit.h</DependentOn>
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FBGEdit.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FCustDlg.cpp">
+            <Form>FormDialog</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FCustDlg.h</DependentOn>
+            <BuildOrder>16</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FCustDlg.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FEditCurve2D.cpp">
+            <Form>FormEditCurve2D</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FEditCurve2D.h</DependentOn>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FEditCurve2D.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FGroup.cpp">
+            <Form>FormGroup</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FGroup.h</DependentOn>
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FGroup.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FInfo.cpp">
+            <Form>FormInfo</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FInfo.h</DependentOn>
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FInfo.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FInput.cpp">
+            <Form>FormInput</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FInput.h</DependentOn>
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FInput.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FMain.cpp">
+            <Form>FormMain</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FMain.h</DependentOn>
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FMain.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FMapGen.cpp">
+            <Form>FormMapGen</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FMapGen.h</DependentOn>
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FMapGen.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FMissionInfo.cpp">
+            <Form>FormMissionInfo</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FMissionInfo.h</DependentOn>
+            <BuildOrder>32</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FMissionInfo.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FMissionScript.cpp">
+            <Form>FormMissionScript</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FMissionScript.h</DependentOn>
+            <BuildOrder>34</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FMissionScript.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FNew.cpp">
+            <Form>FormNewMap</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FNew.h</DependentOn>
+            <BuildOrder>36</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FNew.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FObjProp.cpp">
+            <Form>FormObjManager</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FObjProp.h</DependentOn>
+            <BuildOrder>38</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FObjProp.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FPolitics.cpp">
+            <Form>FormPolitics</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FPolitics.h</DependentOn>
+            <BuildOrder>40</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FPolitics.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FPref.cpp">
+            <Form>FormPreferences</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FPref.h</DependentOn>
+            <BuildOrder>42</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FPref.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FPreview.cpp">
+            <Form>FormPreview</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FPreview.h</DependentOn>
+            <BuildOrder>44</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FPreview.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FRadar.cpp">
+            <Form>FormRadar</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FRadar.h</DependentOn>
+            <BuildOrder>46</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FRadar.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FTMP.cpp">
+            <Form>FormObjectManager</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FTMP.h</DependentOn>
+            <BuildOrder>48</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FTMP.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FTool.cpp">
+            <Form>FormTool</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FTool.h</DependentOn>
+            <BuildOrder>50</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FTool.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\FTree.cpp">
+            <Form>FormTree</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\FTree.h</DependentOn>
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\FTree.dfm"/>
+        <None Include="..\..\..\..\src\Tools\MapEditor\ImgExEditorForm.dfm"/>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\MEError.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\MEError.h</DependentOn>
+            <BuildOrder>54</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\PPME_Cfg.cpp">
+            <BuildOrder>56</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\PPME_Cfg.h">
+            <BuildOrder>57</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\PPME_Defines.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\PPME_Defines.h</DependentOn>
+            <BuildOrder>58</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\PPME_Desktop.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\PPME_Desktop.h</DependentOn>
+            <BuildOrder>59</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\..\..\src\Tools\MapEditor\PP_Version.h">
+            <BuildOrder>55</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\..\..\src\Tools\MapEditor\Tools.cpp">
+            <DependentOn>..\..\..\..\src\Tools\MapEditor\Tools.h</DependentOn>
+            <BuildOrder>61</BuildOrder>
+        </CppCompile>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FNew.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FMissionScript.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FPolitics.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FObjProp.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FMissionInfo.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FInput.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FInfo.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FMapGen.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FMain.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FPref.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FTree.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FRadar.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FPreview.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FTool.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FTMP.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FGroup.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FBGEdit.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FBayManager.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FEditCurve2D.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FCustDlg.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FAlt.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\DataM.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\FAbout.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenRandomConfig.dfm"/>
+        <FormResources Include="..\..\..\..\src\Tools\MapEditor\ecosysconfig\FEcoSysGenKernelConfig.dfm"/>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality>
+                <ProjectProperties>
+                    <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+                    <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                </ProjectProperties>
+                <Source>
+                    <Source Name="MainSource">MapEditor.cpp</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
+            </CPlusPlusBuilder.Personality>
+            <Deployment Version="4">
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64280.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64280mt.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32280.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32280mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c280.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c280mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\lib\gametoolkit\lib\bcb6\libpng.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\lib\gametoolkit\lib\bcb6\zlib.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\lib\gametoolkit\lib\easyloggingpp-9.97.1\easylogging++.cc" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\DataM.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\DataM.dti" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FAbout.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FAlt.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FBGEdit.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FBayManager.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FCustDlg.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FEditCurve2D.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FGroup.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FInfo.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FInput.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FMain.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FMapGen.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FMissionInfo.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FMissionScript.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FNew.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FObjProp.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FPolitics.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FPref.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FPreview.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FRadar.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FTMP.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FTool.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\FTree.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\src\Tools\MapEditor\ImgExEditorForm.dfm" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\tmp\MapEditor\Win32\Debug\MapEditor.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>MapEditor.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\tmp\MapEditor\Win32\Debug\MapEditor.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>MapEditor.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\ddraw.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\dinput.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk\dsound.lib" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidClasses">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidFileProvider">
+                    <Platform Name="Android">
+                        <RemoteDir>res\xml</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\xml</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiv7aFile">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStylesV21">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values-v21</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values-v21</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_Colors">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon192">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_NotificationIcon24">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_NotificationIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_NotificationIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_NotificationIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_NotificationIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_Strings">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXDebug">
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSLaunchScreen">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen</RemoteDir>
+                        <Operation>64</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iOS_AppStore1024">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_AppIcon152">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_AppIcon167">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_LaunchDark2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Notification40">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Setting58">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_SpotLight80">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_AppIcon120">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_AppIcon180">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch3x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_LaunchDark2x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_LaunchDark3x">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\LaunchScreenImage.imageset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Notification40">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Notification60">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Setting58">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Setting87">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Spotlight120">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Spotlight80">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimARM64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+            </Deployment>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>

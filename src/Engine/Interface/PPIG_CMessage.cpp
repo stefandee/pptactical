@@ -44,7 +44,11 @@ CPIMessageConsole::CPIMessageConsole(CPIWinControl *Parent) : CPIControl(Parent)
     mText      = "";
     mWordWrap  = false;
 
+#if PPT_USE_SDL
     mFont  = new CPFont(PATH_FONTS + FILE_FONT_SMALL, 14, true);
+#else
+    mFont  = new CPFont(PATH_FONTS + FILE_FONT_SMALL);
+#endif // PPT_USE_SDL
 
     mImgBkg     = NULL;
     mImgBkg     = GetGraphicInstance()->AddSprite(CPString(PATH_INGAME_GFX) + "msg.png", 1, 1);

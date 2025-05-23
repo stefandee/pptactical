@@ -1210,7 +1210,8 @@ void CPIMainScreen::DeleteDialogClosed(CPIObject *Sender)
 
     if (!result)
     {
-        ShowDialog("Error", "Save game could not be deleted!", DB_OK);
+        StandardGUICallback empty;
+        ShowDialog("Error", "Save game could not be deleted!", DB_OK, empty);
     }
   }
 }

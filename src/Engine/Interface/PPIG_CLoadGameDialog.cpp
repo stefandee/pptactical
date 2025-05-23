@@ -38,7 +38,12 @@ CPP_CLoadGameDialog::CPP_CLoadGameDialog(CPIWinControl *Parent) : CPP_CBaseSaveG
   mScreen->AddControl(mImgDialog);
 
   // title label
+#if PPT_USE_SDL
   CPFont* lFont2 = new CPFont(PATH_FONTS + FILE_FONT_BIG, 20, true);
+#else
+  CPFont* lFont2 = new CPFont(PATH_FONTS + FILE_FONT_BIG);
+  lFont2->SetSize(20);
+#endif // PPT_USE_SDL
 
   mLabelTitle = new CPILabel(mScreen);
   mLabelTitle->SetLeft(340);
@@ -92,14 +97,24 @@ CPP_CLoadGameDialog::CPP_CLoadGameDialog(CPIWinControl *Parent) : CPP_CBaseSaveG
   mScreen->AddControl(mSaveGamesList);
   mSaveGamesList->BringToFront();
 
+#if PPT_USE_SDL
   lFont2 = new CPFont(PATH_FONTS + FILE_FONT_SMALL, 14, true);
+#else
+  lFont2 = new CPFont(PATH_FONTS + FILE_FONT_SMALL);
+  lFont2->SetSize(14);
+#endif // PPT_USE_SDL
   mSaveGamesList->SetFont(lFont2);
 
   // set the handler for left click
   mSaveGamesList->SetHandleOnLeftMouseDown(std::bind(&CPP_CLoadGameDialog::SaveListClick, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
   // the savegame info box
+#if PPT_USE_SDL
   lFont2 = new CPFont(PATH_FONTS + FILE_FONT_SMALL, 14, true);
+#else
+  lFont2 = new CPFont(PATH_FONTS + FILE_FONT_SMALL);
+  lFont2->SetSize(14);
+#endif // PPT_USE_SDL
 
   mLabelTimeDate = new CPILabel(mScreen);
   mLabelTimeDate->SetLeft(265);

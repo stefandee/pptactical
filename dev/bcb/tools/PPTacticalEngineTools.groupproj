@@ -15,6 +15,9 @@
         <Projects Include="UnitsEd\UnitsEd.cbproj">
             <Dependencies>..\..\..\lib\gametoolkit\dev\bcb\Components\PironGamesComponents.cbproj</Dependencies>
         </Projects>
+        <Projects Include="MapEditor\MapEditor.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="UnitsEd:Make" DependsOnTargets="PironGamesComponents:Make">
         <MSBuild Projects="UnitsEd\UnitsEd.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="MapEditor">
+        <MSBuild Projects="MapEditor\MapEditor.cbproj"/>
+    </Target>
+    <Target Name="MapEditor:Clean">
+        <MSBuild Projects="MapEditor\MapEditor.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MapEditor:Make">
+        <MSBuild Projects="MapEditor\MapEditor.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PironGamesComponents;MapChunkEd;BuildingEd;UnitsEd"/>
+        <CallTarget Targets="PironGamesComponents;MapChunkEd;BuildingEd;UnitsEd;MapEditor"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean;BuildingEd:Clean;UnitsEd:Clean"/>
+        <CallTarget Targets="PironGamesComponents:Clean;MapChunkEd:Clean;BuildingEd:Clean;UnitsEd:Clean;MapEditor:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make;BuildingEd:Make;UnitsEd:Make"/>
+        <CallTarget Targets="PironGamesComponents:Make;MapChunkEd:Make;BuildingEd:Make;UnitsEd:Make;MapEditor:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

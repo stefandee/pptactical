@@ -28,6 +28,8 @@
 //---------------------------------------------------------------------------
 #include "Platform.h"
 
+#include "easylogging++.h"
+
 #ifdef PPT_PLATFORM_WIN
 #include <io.h>
 #endif

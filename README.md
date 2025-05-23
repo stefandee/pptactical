@@ -16,9 +16,7 @@ Previous releases of the engine may be found at https://sourceforge.net/projects
 
 A detailed history of the project may be found in [doc/PPT Releases.doc](doc/PPT%20Releases.doc)
 
-## Setup
-
-### General
+## General Setup
 This project uses submodules and they need to be initialized. 
 
 After cloning the project, run:
@@ -30,7 +28,9 @@ git submodule update
 
 Alternatively, pass --recurse-submodules to git clone (or tick the box in your clone popup if you have a visual git client).
 
-### Building The Engine
+## Engine Setup
+
+### Prerequisites
 
 Get a C++ compiler:
 * compiler standard is ISO C++11
@@ -54,14 +54,7 @@ The engine should build and run on all platforms where SDL is supported (Windows
 > [!IMPORTANT]
 > In order to overcome the endianess problem, the Stream_ANSI_C class has been added endian manipulation; since the data files are in little endian format, on big endian platforms conversion on reading basic data types must be performed. To enable endianess conversion, you must set the PPT_BIGENDIAN_IO define.
 
-### Building The Tools
-
-C++ Builder 11 or later is required to build the tools.
-
-The tools are using custom VCL components, which must be installed first by opening [gametoolkit/dev/bcb/Components/PironGamesComponents.cbproj](gametoolkit/dev/bcb/Components/PironGamesComponents.cbproj), then build and install.
-
-### Running The Engine And Tools
-
+### Running
 > [!IMPORTANT]
 > In order to run, please make sure that these DLLs are present in [bin](bin/) folder or in your path. Please make sure the DLLs are for the correct architecture you're building for (e.g. 64 bit)
 
@@ -75,21 +68,55 @@ SDL2_mixer.dll
 SDL2_ttf.dll
 ```
 
-## Heads-Up
+## Tools Setup
+
+### Prerequisites
+
+C++ Builder 11.2 or later is required to build the tools.
+
+A project group to conveniently have all the tools in one place is available here: [dev/bcb/tools/PPTacticalEngineTools.groupproj](dev/bcb/tools/PPTacticalEngineTools.groupproj)
+
+### Building
+
+Build and install the custom components from the PironGamesComponents projects.
+
+Please note that the Map Editor is quite large in lines of code and C++ Builder will display a nagware popup everytime you try to build. Apparently, people at Embarcadero can't wrap their heads around large open-source being coded just for fun without making any sort of money.
+
+> [!IMPORTANT]
+> Map Editor uses DirectX libraries, which are only available in C:\Program Files (x86)\Embarcadero\Studio\22.0\lib\win32\release\psdk. If your C++ Builder install path is different, please re-add ddraw.lib, dsound.lib and dinput.lib
+
+### Running the Map Editor
+
+The original game used 16 bit graphic modes for performance reasons, so DirectX rendering system was optimized for this. 
+
+This means that Map Editor needs to be run on a desktop with bit depth set to 16 bit to work correctly. As this is no longer possible, some shims are required:
+* get DDrawCompat from https://github.com/narzoul/DDrawCompat/releases
+* extract ddraw.dll into the path contains the Map Editor executable, either tmp/MapEditor/Win32/Debug if you're running from inside C++ Builder or in [bin](bin/) if you are running stand-alone.
+* copy [etc/DDrawCompat/DDrawCompat.ini] into the same path as above.
+
+## Quirks&Limitations
+
+The tools (map editor and the like) are hardcoded to treat all images as PNGs, so PNG is the official format for graphics that are shared between engine and editors. This might be changed in the future by using a generic API to load graphic files in the tools (e.g. GDI+).
+
+The license block at the beginning of some source files is still mentioning GPL. Please treat the license as LGPL.
+
+Map Editor needs a compatibility shim to work on 32 bit desktops, see above. In the future, SDL 2 should be integrated with the Map Editor for consistency.
+
+PNGDib library used by GPngLoad class is a custom version that uses PP::Stream interface. This is only for the DirectX system.
 
 ## Documentation
 
 Documentation covering many aspects of the engine is available in [doc](doc/) folder.
 
-Docs also contain an article written in 2006 for a magazine in Poland called Software Developer's Journal.
+Docs also contain an article written in 2006 for a magazine in Poland called Software Developer's Journal which is a tutorial on how to implement a factory building (a building that builds units, the staple of any RTS).
 
 ## Credits
 
-Pure Power Tactical Engine was originally developed at [Piron Games](https://www.pirongames.com) as part of the Pure Power project by Doru "grabX" Girba and Stefan "Karg" Dicu.
+Pure Power Tactical Engine was originally developed at [Piron Games](https://www.pirongames.com) as part of the Pure Power project by Doru "grab" Girba and Stefan "Karg" Dicu.
 
 Big thanks to Mike "tamlin" Nordell for massive contributions to the code base.
 
-Additional coding by: Florin, Traian "symbol shift" Pop, Adrian "Kafka" Pop, Stelian Serban.
+Additional coding: Adrian "Kafka" Pop, Florin (sorry, forgot your full name).
 
 Assets come from the original Pure Power project and were created by Bogdan "Dahn" Hodorog, Stefan "Karg" Dicu, Stelian Serban and Stefan "Max" Giurgiu.
 
@@ -106,5 +133,7 @@ Assets come from the original Pure Power project and were created by Bogdan "Dah
 ## License
 
 Code is licensed under [LGPL license](https://www.gnu.org/licenses/lgpl-3.0.txt).
+
+Please note that CSL license is GPL.
 
 Assets are licensed under [Creative Commons Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/4.0/).

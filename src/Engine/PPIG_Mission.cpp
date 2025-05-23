@@ -89,6 +89,7 @@ using namespace std;
 #include "PPIG_BGManager.h"
 #include "EngineConfig.h"
 #include "PPIG_TransportRules.h"
+#include "PP_Stdlib.h"
 
 #ifdef _MSC_VER
 #define for if(0) {} else for
@@ -1742,7 +1743,7 @@ CPString CIGMission::GetObjectHint()
     CIGBaseObject* object = GetObjectAtReal(GetCurrentPoint().x, GetCurrentPoint().y);
 
     // check the relation and setting to select/hover neutral elements
-    return object && (mBGManager->GetRelation(OS_PLAYER, object->GetBattleGroupId()) != REL_NEUTRAL || GetNeutralUnitHint()) ? (object->GetName() + toString(object->GetId()).c_str()) : CPString("");
+    return object && (mBGManager->GetRelation(OS_PLAYER, object->GetBattleGroupId()) != REL_NEUTRAL || GetNeutralUnitHint()) ? (object->GetName() + PP::toString(object->GetId()).c_str()) : CPString("");
 }
 //---------------------------------------------------------------------------
 

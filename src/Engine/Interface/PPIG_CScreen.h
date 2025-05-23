@@ -34,6 +34,7 @@
 #include "PP_CScreen.h"
 #include "PPIG_InterfaceDef.h"
 #include "PP_GuiDef.h"
+#include "PP_GuiCallbacks.h"
 
 // fwd. decl.
 class CPIPanel;
@@ -175,7 +176,7 @@ class CPIMainScreen: public CPIScreen
       CPICheckBox*         mShowUnitTooltipCheck;
 
    private:
-        void ShowDialog(const CPString& title, const CPString& message, TDialogButtons buttons, StandardGUICallback callback = NULL);
+        void ShowDialog(const CPString& title, const CPString& message, TDialogButtons buttons, StandardGUICallback callback);
 };
 
 CPIMainScreen* GetMainScreenInstance();

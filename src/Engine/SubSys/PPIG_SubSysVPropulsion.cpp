@@ -320,8 +320,10 @@ void CIGSubSysVPropulsion::OnActionLoad ()
        // for this unit
        GetMissionInstance()->GetObjects(MOL_ALLOBJECTS)->Remove(lParent);
 
+       TPoliticsRelations relation = GetMissionInstance()->GetBGManager()->GetRelation(OS_PLAYER, lParent->GetBattleGroupId());
+
        // and remove the unit from selections lists
-       switch (GetMissionInstance()->GetBGManager()->GetRelation(OS_PLAYER, lParent->GetBattleGroupId()))
+       switch (relation)
         {
            case REL_NEUTRAL:
               GetMissionInstance()->GetObjects(MOL_NEUTRALUNITS)->Remove(lParent);
@@ -337,6 +339,9 @@ void CIGSubSysVPropulsion::OnActionLoad ()
            case REL_ENEMY:
               GetMissionInstance()->GetObjects(MOL_ENEMYUNITS)->Remove(lParent);
               GetMissionInstance()->GetObjects(MOL_SELECTEDOTHERS)->Remove(lParent);
+              break;
+           default:
+              VLOG(2) << "Unkown relation " << relation << " between player and battle group with id " << lParent->GetBattleGroupId();
               break;
        }
 
