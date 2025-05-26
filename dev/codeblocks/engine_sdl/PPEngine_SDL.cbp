@@ -40,6 +40,7 @@
 			<Add option="-DZC_WIN" />
 			<Add option="-DTARGET_SDL2" />
 			<Add option="-DELPP_NO_DEFAULT_LOG_FILE" />
+			<Add option="-DPPT_USE_VFS" />
 			<Add directory="../../../lib/gametoolkit/lib/easyloggingpp-9.97.1" />
 			<Add directory="../../../lib/gametoolkit/lib/physfs-2.0.3" />
 			<Add directory="../../../lib/gametoolkit/lib/tinyxml2" />
