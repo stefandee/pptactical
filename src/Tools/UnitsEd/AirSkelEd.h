@@ -41,7 +41,6 @@ private:	// User declarations
         void DataToScreen();
 public:		// User declarations
         __fastcall TAirSkelEditor(TComponent* Owner);
-        //Graphics::TBitmap* Sprite;
         TPngImage* Sprite;
         TRect rs, rd, rg;
         int  bodyCellNo, DivideFactor;

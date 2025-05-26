@@ -124,8 +124,8 @@ void CIGSpaceSoundSystem::Play(int soundIndex, int X, int Y)
    float lRes1 = (float)((Y - mReferencePoint.y) - (X - mReferencePoint.x) * tan((mEarConeAngle / 2) * 3.1415 / 180.0));
    float lRes2 = (float)((Y - mReferencePoint.y) - (X - mReferencePoint.x) * tan((180.0 - mEarConeAngle / 2) * 3.1415 / 180.0));
 
-   if ( (lRes1 < 0.0) && (lRes2 > 0.0) ||
-        (lRes1 > 0.0) && (lRes2 < 0.0))
+   if ( (lRes1 < 0.0 && lRes2 > 0.0) ||
+        (lRes1 > 0.0 && lRes2 < 0.0))
    {
      if (X - mReferencePoint.x > 0)
      {

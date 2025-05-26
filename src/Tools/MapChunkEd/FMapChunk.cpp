@@ -335,14 +335,14 @@ void __fastcall TFormMain::edNameExit(TObject* Sender)
 
 void __fastcall TFormMain::Import1Click(TObject* Sender)
 {
-    // load a the specified bitmap, split the bitmap according to size then
+    // load a the specified image, split the image according to size then
     // fill the mapchunk
 
     if (!dialogOpenPicture->Execute()) {
         return;
     }
 
-    Graphics::TBitmap* lBmp = new Graphics::TBitmap;
+    TPngImage* lBmp = new TPngImage();
 
     try {
         lBmp->LoadFromFile(dialogOpenPicture->FileName);
@@ -390,6 +390,7 @@ void __fastcall TFormMain::Import1Click(TObject* Sender)
             lFileName = lFileName + "_" + AnsiString(i + 1) + AnsiString(j + 1) + lFileExt;
 
             // and save the cell
+            // TODO this will save as BMP, needs to save as PNG
             lBmpToSave->SaveToFile(lFileName);
             delete lBmpToSave;
 

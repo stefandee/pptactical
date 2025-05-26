@@ -192,15 +192,29 @@ void CIGUnit::SetProjectileSprite(CPString fileName)
 {
    if (fileName.isEmpty() == false)
    {
-     mProjectileSprite = GetGraphicInstance()->AddSprite(CPString(PATH_EXPLODES_GFX) + fileName, 8, 2, SPRL_MISSION);
+        CPString spritePath = CPString(PATH_EXPLODES_GFX) + fileName;
+
+#ifndef PPT_USE_VFS
+        spritePath = getGamePath() + spritePath;
+#endif // PPT_USE_VFS
+
+     mProjectileSprite = GetGraphicInstance()->AddSprite(spritePath, 8, 2, SPRL_MISSION);
    }
 }
 //---------------------------------------------------------------------------
 
 void CIGUnit::SetEffectSprite(CPString fileName)
 {
-   if (fileName.isEmpty() == false)
-      mEffectSprite = GetGraphicInstance()->AddSprite(CPString(PATH_EXPLODES_GFX) + fileName, 8, 2, SPRL_MISSION);
+    if (fileName.isEmpty() == false)
+    {
+        CPString spritePath = CPString(PATH_EXPLODES_GFX) + fileName;
+
+#ifndef PPT_USE_VFS
+        spritePath = getGamePath() + spritePath;
+#endif // PPT_USE_VFS
+
+        mEffectSprite = GetGraphicInstance()->AddSprite(spritePath, 8, 2, SPRL_MISSION);
+    }
 }
 //---------------------------------------------------------------------------
 
@@ -208,7 +222,13 @@ void CIGUnit::SetAfterEffectSprite(CPString fileName)
 {
    if (fileName.isEmpty() == false)
    {
-     mAfterEffectSprite = GetGraphicInstance()->AddSprite(CPString(PATH_EXPLODES_GFX) + fileName, 8, 2, SPRL_MISSION);
+        CPString spritePath = CPString(PATH_EXPLODES_GFX) + fileName;
+
+#ifndef PPT_USE_VFS
+        spritePath = getGamePath() + spritePath;
+#endif // PPT_USE_VFS
+
+     mAfterEffectSprite = GetGraphicInstance()->AddSprite(spritePath, 8, 2, SPRL_MISSION);
    }
 }
 //---------------------------------------------------------------------------

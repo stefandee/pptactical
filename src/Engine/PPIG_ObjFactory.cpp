@@ -37,7 +37,13 @@ CIGFactoryObject::CIGFactoryObject() : CIGStaticObject()
   mRallyPoint = CPPoint(-1, -1);
 
   // add the flag effect
-  mRallyFlagSprite = GetGraphicInstance()->AddSprite(CPString(PATH_EXPLODES_GFX) + "flag.png", 1, 1);
+  CPString spritePath = CPString(PATH_EXPLODES_GFX) + "flag.png";
+
+#ifndef PPT_USE_VFS
+    spritePath = getGamePath() + spritePath;
+#endif // PPT_USE_VFS
+
+  mRallyFlagSprite = GetGraphicInstance()->AddSprite(spritePath, 1, 1);
 
   // subsystems
   mBuilder = new CIGSubSysBuilder(this);

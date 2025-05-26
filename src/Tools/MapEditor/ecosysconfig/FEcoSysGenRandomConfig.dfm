@@ -3,8 +3,8 @@ object FormEcoSysGenRandomConfig: TFormEcoSysGenRandomConfig
   Top = 259
   BorderStyle = bsSingle
   Caption = 'EcoSysGen Random Config'
-  ClientHeight = 220
-  ClientWidth = 588
+  ClientHeight = 219
+  ClientWidth = 584
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,11 +16,12 @@ object FormEcoSysGenRandomConfig: TFormEcoSysGenRandomConfig
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 588
+    Width = 584
     Height = 185
     ActivePage = TabSheet1
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 588
     object TabSheet1: TTabSheet
       Caption = 'Items'
       object DrawGrid: TDrawGrid

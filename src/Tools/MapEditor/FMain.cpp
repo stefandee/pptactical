@@ -108,10 +108,6 @@ TFormMain *FormMain;
 __fastcall TFormMain::TFormMain(TComponent* Owner)
    : TForm(Owner)
 {
-  //GetVfsInstance();
-
-  // TODO figure out wh
-  // OnMouseWheel = (TMouseWheelEvent)&FormMouseWheel;
 }
 //---------------------------------------------------------------------------
 
@@ -1599,8 +1595,11 @@ void __fastcall TFormMain::HistoryClick(TObject *Sender)
 
   try
   {
+    // TODO integrate VFS
     PP::Stream_ANSI_C lA(CPString(lFileName.c_str()));
+
     GetMissionInstance()->DeSerialize(lA);
+
     UpdateVisibility(2);
   }
   catch(...)
@@ -1854,7 +1853,12 @@ void __fastcall TFormMain::itOpenClick(TObject *Sender)
    {
       try
       {
+#if PPT_USE_VFS
+        PP::Stream_PhysFS lA(CPString(PATH_MISSIONS) + CPString(System::UTF8String(ExtractFileName(dialogOpen->FileName)).c_str()));
+#else
         PP::Stream_ANSI_C lA(CPString(System::UTF8String(dialogOpen->FileName).c_str()));
+#endif
+
         GetMissionInstance()->DeSerialize(lA);
         //GetMissionInstance()->LoadFromFile(dialogOpen->FileName.c_str());
         UpdateVisibility(2);
@@ -2549,7 +2553,12 @@ void __fastcall TFormMain::Politics1Click(TObject *Sender)
 ---------------------------------------------------------------------------*/
 void TFormMain::InitMapEditorSession()
 {
+#if PPT_USE_VFS
+  GetVfsInstance();
+#endif // PPT_USE_VFS
+
    InitLog();
+
 #ifdef PP_TEST_VERSION
    initGamePath();
 #endif

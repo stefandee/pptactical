@@ -1832,10 +1832,13 @@ void CIGMission::Serialize(PP::Stream& _a)
         // path read from the file are relative to the game directory
         // they must be completed with the game path in order to read sprites
         CPString lFullPath = lSprite->GetFileName();
-        //CSerString lSprFile(lFullPath.SubString(getGamePath().Length()/* - 1*/, lFullPath.Length() - getGamePath().Length()/* + 1*/));
 
+#if PPT_USE_VFS
         // when using the physfs filesystem, there's no need to worry about full path
         CSerString lSprFile(lFullPath);
+#else
+        CSerString lSprFile(lFullPath.SubString(getGamePath().Length()/* - 1*/, lFullPath.Length() - getGamePath().Length()/* + 1*/));
+#endif // PPT_USE_VFS
 
         // sprite relative path and file name
         lSprFile.Serialize(_a);
@@ -1907,7 +1910,12 @@ void CIGMission::DeSerialize(PP::Stream& _a)
         lSprFile.DeSerialize(_a);
 
         // path read from the file are relative to the game directory, as the vfs needs
+
+#if PPT_USE_VFS
         CPString lFullPath = lSprFile.Get();
+#else
+        CPString lFullPath = getGamePath() + lSprFile.Get();
+#endif // PPT_USE_VFS
 
         // reading sprite cells
         lSprWCells.DeSerialize(_a);

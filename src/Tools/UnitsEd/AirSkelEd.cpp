@@ -191,7 +191,6 @@ void __fastcall TAirSkelEditor::FormCreate(TObject *Sender)
 {
   try
   {
-    //Sprite = new Graphics::TBitmap();
     Sprite = new TPngImage();
     //Sprite->Width = 16;
     //Sprite->Height = 16;
@@ -209,7 +208,6 @@ void TAirSkelEditor::SetSprite(AnsiString _fileName)
 
   try
   {
-    //Sprite = new Graphics::TBitmap();
     Sprite = new TPngImage();
     //Sprite->Width = 16;
     //Sprite->Height = 16;

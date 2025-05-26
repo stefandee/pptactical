@@ -39,6 +39,7 @@
 *.ilf 
 *.ils
 *.map
+*.pdi
 *.stat
 *.cbproj.local
 *.groupproj.local

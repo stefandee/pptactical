@@ -89,18 +89,18 @@ Please note that the Map Editor is quite large in lines of code and C++ Builder 
 
 The original game used 16 bit graphic modes for performance reasons, so DirectX rendering system was optimized for this. 
 
-This means that Map Editor needs to be run on a desktop with bit depth set to 16 bit to work correctly. As this is no longer possible, some shims are required:
+This means that Map Editor needs to be run on a desktop with bit depth set to 16 bit to work correctly. As this is no longer possible in Windows 10/11, some shims are required:
 * get DDrawCompat from https://github.com/narzoul/DDrawCompat/releases
 * extract ddraw.dll into the path contains the Map Editor executable, either tmp/MapEditor/Win32/Debug if you're running from inside C++ Builder or in [bin](bin/) if you are running stand-alone.
-* copy [etc/DDrawCompat/DDrawCompat.ini] into the same path as above.
+* copy [etc/DDrawCompat/DDrawCompat.ini] into the same path(s) as above.
 
-## Quirks&Limitations
+## Quirks&Limitations&Known Issues
 
 The tools (map editor and the like) are hardcoded to treat all images as PNGs, so PNG is the official format for graphics that are shared between engine and editors. This might be changed in the future by using a generic API to load graphic files in the tools (e.g. GDI+).
 
-The license block at the beginning of some source files is still mentioning GPL. Please treat the license as LGPL.
+None of the tools are integrated with VFS (PPT_USE_VFS is NOT defined for these projects). This means some assets are required to be in a certain relative paths, e.g. CIGUnit effect sprite should be in PATH_EXPLODES_GFX (Data/Gfx/Explode)
 
-Map Editor needs a compatibility shim to work on 32 bit desktops, see above. In the future, SDL 2 should be integrated with the Map Editor for consistency.
+The license block at the beginning of some source files is still mentioning GPL. Please treat the license as LGPL.
 
 PNGDib library used by GPngLoad class is a custom version that uses PP::Stream interface. This is only for the DirectX system.
 
@@ -108,7 +108,7 @@ PNGDib library used by GPngLoad class is a custom version that uses PP::Stream i
 
 Documentation covering many aspects of the engine is available in [doc](doc/) folder.
 
-Docs also contain an article written in 2006 for a magazine in Poland called Software Developer's Journal which is a tutorial on how to implement a factory building (a building that builds units, the staple of any RTS).
+Docs also contain an article written in 2006 for a magazine in Poland called Software Developer's Journal, a tutorial on how to implement a factory building (a building that builds units, the staple of any RTS).
 
 ## Credits
 
@@ -118,7 +118,7 @@ Big thanks to Mike "tamlin" Nordell for massive contributions to the code base.
 
 Additional coding: Adrian "Kafka" Pop, Florin (sorry, forgot your full name).
 
-Assets come from the original Pure Power project and were created by Bogdan "Dahn" Hodorog, Stefan "Karg" Dicu, Stelian Serban and Stefan "Max" Giurgiu.
+Graphic assets come from the original Pure Power project and were created by Bogdan "Dahn" Hodorog, Stefan "Karg" Dicu, Stelian Serban and Stefan "Max" Giurgiu.
 
 ## Media
 

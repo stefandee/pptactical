@@ -271,8 +271,6 @@ void __fastcall TMaskForm::paintBoxPaint(TObject* Sender)
     }
 
     // paint the layers
-    // Graphics::TBitmap* lTempBmp = new Graphics::TBitmap();
-
     for (int i = 0; i < MainForm->tempS->mLayersCount; i++) {
         TPngImage* lBmp = FormToolProp->GetBmpByName(AnsiString(MainForm->tempS->mLayers[i].mSprite));
 

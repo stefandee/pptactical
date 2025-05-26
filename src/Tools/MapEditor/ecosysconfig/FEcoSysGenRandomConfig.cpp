@@ -7,6 +7,7 @@
 #include "PPIG_Mission.h"
 #include "PPIG_Map.h"
 #include "Tools.h"
+#include <Vcl.Imaging.pngimage.hpp>
 //---------------------------------------------------------------------------
 
 #pragma package(smart_init)
@@ -166,7 +167,7 @@ void __fastcall TFormEcoSysGenRandomConfig::DrawGridDrawCell(
   // an index in mItems
   using namespace Windows;
 
-  Graphics::TBitmap* lBmp = new Graphics::TBitmap();
+  TPngImage* lBmp = new TPngImage();
 
   try
   {
@@ -245,7 +246,7 @@ void __fastcall TFormEcoSysGenRandomConfig::Add1Click(TObject *Sender)
     DrawGrid->ColCount = mItems.size();
     DrawGrid->Col = mItems.size() - 1;
 
-    Graphics::TBitmap* lBmp = new Graphics::TBitmap();
+    TPngImage* lBmp = new TPngImage();
 
     try
     {
